@@ -91,16 +91,17 @@ fun HomeView(
                 activities = groupedActivities
             )
         }
+        Spacer(modifier = Modifier.height(8.dp))
+        HomeMoreActivities(
+            randomWords = randomWords,
+            randomizeWords = onRandomizeWords,
+            onNavigateToFlashcards = onNavigateToFlashcards
+        )
         RecentActivityCard(
             period = period,
             maxValue = maxValue,
             activities = activities,
             onPeriodChange = onPeriodChange
-        )
-        HomeMoreActivities(
-            randomWords = randomWords,
-            randomizeWords = onRandomizeWords,
-            onNavigateToFlashcards = onNavigateToFlashcards
         )
         Spacer(modifier = Modifier.height(12.dp))
     }

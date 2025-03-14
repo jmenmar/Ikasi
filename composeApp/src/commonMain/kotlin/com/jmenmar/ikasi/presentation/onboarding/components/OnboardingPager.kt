@@ -30,7 +30,7 @@ fun OnboardingPager(
     onSelectGoalPeriod: (GoalPeriod) -> Unit = {},
     onFinish: () -> Unit,
 ) {
-    val pagerState = rememberPagerState(pageCount = { 2 })
+    val pagerState = rememberPagerState(pageCount = { 3 })
 
     Column(
         modifier = Modifier
@@ -57,10 +57,13 @@ fun OnboardingPager(
                         0 ->
                             WelcomePage()
                         1 ->
+                            SkillsPage()
+                        2 -> {
                             GoalPeriodPage(
                                 selectedPeriod = selectedPeriod,
                                 onSelectPeriod = onSelectGoalPeriod,
                             )
+                        }
                     }
                 }
             }

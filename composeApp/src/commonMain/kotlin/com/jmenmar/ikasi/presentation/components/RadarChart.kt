@@ -1,8 +1,9 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -32,8 +33,7 @@ import kotlin.math.sin
 fun RadarChart(
     labels: List<String>,
     values: List<List<Float>>,
-    colors: List<Color>,
-    labelColors: List<Color>,
+    color: Color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
     drawStyles: List<DrawStyle>,
     modifier: Modifier = Modifier,
     padding: Dp = 10.dp,
@@ -42,8 +42,10 @@ fun RadarChart(
     durationMillis: Int = 700,
     labelStyle: TextStyle = TextStyle.Default,
 ) {
+    val labelsColor = MaterialTheme.colorScheme.onBackground
+
     val itemSize = 5
-    check(labels.size == itemSize && values.all { it.size == itemSize } && colors.isNotEmpty() && drawStyles.isNotEmpty())
+    check(labels.size == itemSize && values.all { it.size == itemSize } && drawStyles.isNotEmpty())
 
     val animationValues = remember(values.size, itemSize) {
         buildList {
@@ -116,7 +118,6 @@ fun RadarChart(
             }
             dataPath.close()
             translate(left = center.x, top = center.y) {
-                val color = colors[i % colors.size]
                 val pathEffect = drawStyles[i % drawStyles.size]
                 drawPath(path = dataPath, color = color, style = Fill)
                 drawPath(path = dataPath, color = color.copy(alpha = 1f), style = pathEffect)
@@ -130,7 +131,11 @@ fun RadarChart(
                     size.maxLengthFromCenter(radian) - label.size.toSize().maxLengthFromCenter(radian)
                 val x = radius * cos(radian) - label.size.width / 2
                 val y = radius * sin(radian) - label.size.height / 2
-                drawText(textLayoutResult = label, topLeft = Offset(x.toFloat(), y.toFloat()), color = labelColors[index])
+                drawText(
+                    textLayoutResult = label,
+                    topLeft = Offset(x.toFloat(), y.toFloat()),
+                    color = labelsColor
+                )
             }
         }
     }

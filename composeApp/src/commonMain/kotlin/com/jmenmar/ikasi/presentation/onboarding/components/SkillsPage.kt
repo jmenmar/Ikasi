@@ -1,13 +1,9 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.onboarding.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -20,21 +16,12 @@ import com.jmenmar.ikasi.presentation.components.RadarChart
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun ActivityOverview(
-    totalDays: Int,
-    activities: Map<ActivityType, Int>,
-) {
-    val max = when {
-        activities.isEmpty() -> 1
-        (activities.values.max() > totalDays * 60) -> activities.values.max()
-        else -> totalDays * 60
-    }
-
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+fun SkillsPage() {
+    OnboardingPageView(
+        title = "Improve your skills",
+        description = "Find out and work on the skills that are most difficult for you on a day-to-day basis.\nLearn how to manage your time more efficiently to improve all your skills.",
     ) {
-        val labels = activities.keys.toList().map { stringResource(it.skill) }
+        val labels = ActivityType.entries.map { stringResource(it.skill) }
         val pathEffects = with(LocalDensity.current) {
             remember(this) {
                 listOf(
@@ -48,12 +35,15 @@ fun ActivityOverview(
         val data = remember {
             buildList {
                 add(buildList {
-                    activities.values.forEach {
-                        add((it*1f)/max)
-                    }
+                    add(0.85f)
+                    add(0.5f)
+                    add(0.6f)
+                    add(0.9f)
+                    add(0.6f)
                 }.toList())
             }.toList()
         }
+
         RadarChart(
             modifier = Modifier
                 .width(350.dp)

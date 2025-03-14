@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -19,7 +18,7 @@ import androidx.compose.ui.unit.dp
 fun OnboardingPageView(
     title: String,
     description: String,
-    content: @Composable() (BoxScope.() -> Unit)
+    content: @Composable (BoxScope.() -> Unit)
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -34,16 +33,17 @@ fun OnboardingPageView(
         Column(
             modifier = Modifier.weight(0.3f).fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.headlineLarge
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center,
             )
             Text(
                 text = description,
                 style = MaterialTheme.typography.bodyLarge,
-                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                 textAlign = TextAlign.Center,
             )
         }

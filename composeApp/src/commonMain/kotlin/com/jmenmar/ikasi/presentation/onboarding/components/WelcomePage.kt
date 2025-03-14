@@ -26,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 fun WelcomePage() {
     OnboardingPageView(
         title = "Welcome to Ikasi",
-        description = "The app that helps you master a new language with an immersive and entertaining routine that you design yourself. No more textbooks and fill in the gaps exercises!",
+        description = "The app that helps you master a new language with an immersive and entertaining routine that you design yourself.\nNo more textbooks and fill in the gaps exercises!",
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
