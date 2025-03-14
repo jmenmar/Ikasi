@@ -64,9 +64,6 @@ kotlin {
             implementation(libs.androidx.sqlite.bundled)
             // DateTime
             implementation(libs.kotlinx.datetime)
-            // DataStore
-            implementation(libs.datastore.preferences)
-            implementation(libs.datastore)
         }
     }
 }

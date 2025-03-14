@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "7323575398320c21cda67718e06fe556",
+    "version": 2,
+    "identityHash": "67947e3faea42629ceb8500979b3f323",
     "entities": [
       {
         "tableName": "activity",
@@ -68,47 +68,11 @@
             "id"
           ]
         }
-      },
-      {
-        "tableName": "settings",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `onboarding` INTEGER NOT NULL, `startDate` INTEGER NOT NULL, `period` TEXT NOT NULL, PRIMARY KEY(`id`))",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "onboarding",
-            "columnName": "onboarding",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "startDate",
-            "columnName": "startDate",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "period",
-            "columnName": "period",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "autoGenerate": false,
-          "columnNames": [
-            "id"
-          ]
-        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7323575398320c21cda67718e06fe556')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '67947e3faea42629ceb8500979b3f323')"
     ]
   }
 }
