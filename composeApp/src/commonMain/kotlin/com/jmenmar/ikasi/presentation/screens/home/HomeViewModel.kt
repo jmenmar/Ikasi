@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.core.allBanners
 import com.jmenmar.ikasi.domain.model.Activity
+import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
 import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
 import com.jmenmar.ikasi.presentation.utils.beforeDate
@@ -27,8 +28,15 @@ class HomeViewModel(
     val state: StateFlow<HomeState> = _state
 
     init {
+        getDays()
         getActivities()
         randomizeWords()
+    }
+
+    private fun getDays() {
+        _state.value = _state.value.copy(
+            totalDays = 1
+        )
     }
 
     private fun getActivities() {
@@ -48,9 +56,16 @@ class HomeViewModel(
         _state.value = state.value.copy(
             totalActivities = allActivities,
             filteredActivities = filtered,
+            groupedActivities = groupActivitiesByType(allActivities),
             maxValue = filtered.groupBy { it.type }.maxByOrNull { it.value.size }?.value?.size
                 ?: 0,
         )
+    }
+
+    private fun groupActivitiesByType(allActivities: List<Activity>): Map<ActivityType, Int> {
+        return ActivityType.entries.sortedBy { it.priority }.associateWith { activityType ->
+            allActivities.filter { it.type == activityType }.sumOf { it.time }
+        }
     }
 
     private fun filterActivitiesByPeriod(allActivities: List<Activity>, period: ActivityPeriod): List<Activity> {

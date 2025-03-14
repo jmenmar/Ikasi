@@ -10,7 +10,9 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
 sealed class NavigationRoute(val route: String) {
+    data object Onboarding : NavigationRoute("onboarding")
     data object Main : NavigationRoute("main")
+    data object Splash : NavigationRoute("splash")
 }
 
 sealed class BottomNavRoute(

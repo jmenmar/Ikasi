@@ -53,7 +53,8 @@ class ActivityViewModel(
                 ikasiRepository.newActivity(
                     Activity(
                         type = state.value.selectedType!!,
-                        date = LocalDate.fromEpochDays(state.value.selectedDate)
+                        date = LocalDate.fromEpochDays(state.value.selectedDate),
+                        time = 30,
                     )
                 )
             }

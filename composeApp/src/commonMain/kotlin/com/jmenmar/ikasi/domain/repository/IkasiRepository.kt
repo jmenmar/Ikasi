@@ -1,6 +1,7 @@
 package com.jmenmar.ikasi.domain.repository
 
 import com.jmenmar.ikasi.domain.model.Activity
+import com.jmenmar.ikasi.domain.model.Settings
 import com.jmenmar.ikasi.domain.model.Word
 import kotlinx.coroutines.flow.Flow
 
@@ -13,4 +14,8 @@ interface IkasiRepository {
     suspend fun newWord(word: Word): Result<Boolean>
     suspend fun deleteWord(word: Word): Result<Boolean>
     suspend fun getRandomWords(length: Int): List<Word>
+
+    suspend fun getSettings(): Flow<Settings?>
+    suspend fun newSettings(settings: Settings): Result<Boolean>
+    suspend fun isOnboardingCompleted(): Boolean?
 }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -40,7 +41,7 @@ fun RecentActivityCard(
     BasicCard(
         title = stringResource(Res.string.home_recent_activity),
     ) {
-        ActivityType.entries.forEach {
+        ActivityType.entries.sortedBy { it.priority }.forEach {
             val progress = if (maxValue <= 0) {
                 0f
             } else {
@@ -52,11 +53,11 @@ fun RecentActivityCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(12.dp))
+                        .clip(RoundedCornerShape(8.dp))
                         .background(color = it.color)
                 ) {
                     Icon(
-                        modifier = Modifier.padding(8.dp),
+                        modifier = Modifier.size(30.dp).padding(5.dp),
                         painter = painterResource(it.icon),
                         contentDescription = "",
                         tint = MaterialTheme.colorScheme.onPrimary,

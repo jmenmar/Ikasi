@@ -6,13 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.jmenmar.ikasi.presentation.navigation.BottomNavBar
 import com.jmenmar.ikasi.presentation.navigation.NavigationGraph
-import com.jmenmar.ikasi.ui.ThemeMode
 
 @Composable
 fun MainScreen(
-    navController: NavHostController = rememberNavController(),
-    theme: ThemeMode,
-    onThemeChange: (ThemeMode) -> Unit,
+    navController: NavHostController = rememberNavController()
 ) {
     Scaffold(
         bottomBar = { BottomNavBar(navController) }
@@ -20,8 +17,6 @@ fun MainScreen(
         NavigationGraph(
             navController = navController,
             innerPadding = innerPadding,
-            theme = theme,
-            onThemeChange = onThemeChange,
         )
     }
 }

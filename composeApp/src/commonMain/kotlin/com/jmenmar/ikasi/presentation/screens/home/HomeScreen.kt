@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.jmenmar.ikasi.domain.model.Activity
-import com.jmenmar.ikasi.domain.model.Banner
+import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.navigation.MoreRoute
-import com.jmenmar.ikasi.presentation.screens.home.components.HomeBannersView
+import com.jmenmar.ikasi.presentation.screens.home.components.ActivityOverview
 import com.jmenmar.ikasi.presentation.screens.home.components.HomeHeader
 import com.jmenmar.ikasi.presentation.screens.home.components.HomeMoreActivities
 import com.jmenmar.ikasi.presentation.screens.home.components.RecentActivityCard
@@ -38,18 +38,19 @@ fun HomeScreen(
 
     HomeView(
         innerPadding = innerPadding,
+        totalDays = state.totalDays,
         period = state.period,
         maxValue = state.maxValue,
         activities = state.filteredActivities,
+        groupedActivities = state.groupedActivities,
         randomWords = state.randomWords,
-        banners = state.banners,
         onPeriodChange = {
             viewModel.changeActivityPeriod(it)
         },
         onRandomizeWords = {
             viewModel.randomizeWords()
         },
-        onNavigateToActivity = {
+        onNavigateToSettings = {
             navController.navigate(MoreRoute.Activity.route)
         },
         onNavigateToFlashcards = {
@@ -61,14 +62,15 @@ fun HomeScreen(
 @Composable
 fun HomeView(
     innerPadding: PaddingValues,
+    totalDays: Int,
     period: ActivityPeriod,
     maxValue: Int,
     activities: List<Activity>,
+    groupedActivities: Map<ActivityType, Int>,
     randomWords: List<Word> = emptyList(),
-    banners: List<Banner> = emptyList(),
     onPeriodChange: (ActivityPeriod) -> Unit = {},
     onRandomizeWords: () -> Unit = {},
-    onNavigateToActivity: () -> Unit = {},
+    onNavigateToSettings: () -> Unit = {},
     onNavigateToFlashcards: () -> Unit = {}
 ) {
     Column(
@@ -81,11 +83,14 @@ fun HomeView(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         HomeHeader(
-            onNavigateToActivity = onNavigateToActivity
+            onNavigateToSettings = onNavigateToSettings
         )
-        HomeBannersView(
-            banners = banners
-        )
+        if (groupedActivities.isNotEmpty()) {
+            ActivityOverview(
+                totalDays = totalDays,
+                activities = groupedActivities
+            )
+        }
         RecentActivityCard(
             period = period,
             maxValue = maxValue,

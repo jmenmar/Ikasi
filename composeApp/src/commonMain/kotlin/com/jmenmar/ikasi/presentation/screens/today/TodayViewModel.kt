@@ -41,13 +41,9 @@ class TodayViewModel(
         )
     }
 
-    fun updateActivity(checked: Boolean, type: ActivityType) {
-        val activity = Activity(type = type, date = todayLocalDate())
-        if (checked) {
-            deleteActivity(activity)
-        } else {
-            addActivity(activity)
-        }
+    fun updateActivity(type: ActivityType, time: ActivityTime) {
+        val activity = Activity(type = type, date = todayLocalDate(), time = time.time)
+        addActivity(activity)
     }
 
     private fun addActivity(activity: Activity) {
@@ -56,9 +52,21 @@ class TodayViewModel(
         }
     }
 
-    private fun deleteActivity(activity: Activity) {
+    fun deleteActivity(activity: Activity) {
         viewModelScope.launch {
             ikasiRepository.deleteActivity(activity)
         }
+    }
+
+    fun changeAddActivitySheetVisibility(isVisible: Boolean) {
+        _state.value = state.value.copy(
+            addActivitySheetVisible = isVisible
+        )
+    }
+
+    fun selectActivityType(type: ActivityType) {
+        _state.value = state.value.copy(
+            selectedActivityType = type
+        )
     }
 }

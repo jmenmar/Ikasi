@@ -7,6 +7,8 @@ import com.jmenmar.ikasi.presentation.screens.flashcards.FlashcardsViewModel
 import com.jmenmar.ikasi.presentation.screens.activity.ActivityViewModel
 import com.jmenmar.ikasi.presentation.screens.today.TodayViewModel
 import com.jmenmar.ikasi.presentation.screens.vocabulary.VocabularyViewModel
+import com.jmenmar.ikasi.presentation.onboarding.OnboardingViewModel
+import com.jmenmar.ikasi.presentation.screens.splash.SplashViewModel
 import org.koin.compose.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
@@ -19,4 +21,6 @@ val presentationModule = module {
     viewModelOf(::VocabularyViewModel)
     viewModelOf(::FlashcardsViewModel)
     viewModelOf(::ActivityViewModel)
+    viewModelOf(::OnboardingViewModel)
+    viewModelOf(::SplashViewModel)
 }

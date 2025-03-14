@@ -2,16 +2,20 @@ package com.jmenmar.ikasi.data.repository
 
 import com.jmenmar.ikasi.data.database.IkasiDatabase
 import com.jmenmar.ikasi.data.model.ActivityEntity.Companion.toDomain
+import com.jmenmar.ikasi.data.model.SettingsEntity.Companion.toDomain
 import com.jmenmar.ikasi.data.model.WordEntity.Companion.toDomain
-import com.jmenmar.ikasi.domain.repository.IkasiRepository
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.Activity.Companion.toEntity
+import com.jmenmar.ikasi.domain.model.Settings
+import com.jmenmar.ikasi.domain.model.Settings.Companion.toEntity
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.domain.model.Word.Companion.toEntity
+import com.jmenmar.ikasi.domain.repository.IkasiRepository
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.map
 
 class IkasiRepositoryImpl(
-    private val ikasiDatabase: IkasiDatabase
+    private val ikasiDatabase: IkasiDatabase,
 ) : IkasiRepository {
     override suspend fun newActivity(activity: Activity): Result<Boolean> {
         return try {
@@ -78,5 +82,21 @@ class IkasiRepositoryImpl(
         } catch (e: Exception) {
             emptyList()
         }
+    }
+
+    override suspend fun getSettings() =
+        ikasiDatabase.settingsDao().getSettings().map { it?.toDomain() }
+
+    override suspend fun newSettings(settings: Settings): Result<Boolean> {
+        return try {
+            ikasiDatabase.settingsDao().insertWord(settings = settings.toEntity())
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun isOnboardingCompleted(): Boolean? {
+        return ikasiDatabase.settingsDao().getSettings().map { it?.toDomain()?.onboarding }.last()
     }
 }

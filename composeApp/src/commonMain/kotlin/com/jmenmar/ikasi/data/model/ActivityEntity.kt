@@ -12,11 +12,13 @@ import kotlinx.datetime.LocalDate
 data class ActivityEntity(
     val type: ActivityType,
     val date: Int,
+    val time: Int,
 ) {
     companion object {
         fun ActivityEntity.toDomain() = Activity(
             type = type,
-            date = LocalDate.fromEpochDays(this.date)
+            date = LocalDate.fromEpochDays(this.date),
+            time = time,
         )
     }
 }

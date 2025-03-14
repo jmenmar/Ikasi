@@ -5,16 +5,21 @@
     <string name="today">Today</string>
     <string name="vocabulary">Vocabulary</string>
 
+    <string name="grammar_vocabulary">Grammar &amp; Vocabulary</string>
     <string name="speaking">Speaking</string>
     <string name="listening">Listening</string>
     <string name="reading">Reading</string>
     <string name="writing">Writing</string>
+    <string name="theory">Theory</string>
 
-    <string name="understanding">Understanding</string>
-    <string name="fluency">Fluency</string>
-    <string name="confidence">Confidence</string>
+    <string name="oral_understanding">Oral Understanding</string>
+    <string name="written_understanding">Written Understanding</string>
+    <string name="oral_expression">Oral Expression</string>
+    <string name="written_expression">Written Expression</string>
+    <string name="fundamentals">Fundamentals</string>
 
     <string name="activities">Activities</string>
+    <string name="update">Update</string>
 
     <string name="home_recent_activity">Recent Activity</string>
     <string name="home_activity">Activity</string>
@@ -40,4 +45,8 @@
     <string name="flashcards_correct">Correct</string>
     <string name="flashcards_incorrect">Incorrect</string>
     <string name="flashcards_no_flashcards">No Flashcards</string>
+
+    <string name="goal_365_days">365 days</string>
+    <string name="goal_100_days">100 days</string>
+
 </resources>
