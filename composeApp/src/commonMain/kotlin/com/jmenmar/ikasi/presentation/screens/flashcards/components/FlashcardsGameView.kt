@@ -29,10 +29,10 @@ import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.ui.GreyMedium
 import com.jmenmar.ikasi.ui.White
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.flashcards_correct
-import ikasi.composeapp.generated.resources.flashcards_incorrect
-import ikasi.composeapp.generated.resources.flashcards_show_meaning
-import ikasi.composeapp.generated.resources.note_stack
+import ikasi.composeapp.generated.resources.correct
+import ikasi.composeapp.generated.resources.incorrect
+import ikasi.composeapp.generated.resources.show_meaning
+import ikasi.composeapp.generated.resources.ic_note_stack
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -75,7 +75,7 @@ fun FlashcardsGameView(
                                 contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                                 onClick = { onNextWordClick(false) }
                             ) {
-                                Text(text = stringResource(Res.string.flashcards_incorrect))
+                                Text(text = stringResource(Res.string.incorrect))
                             }
                             Button(
                                 colors = ButtonDefaults.buttonColors().copy(
@@ -85,7 +85,7 @@ fun FlashcardsGameView(
                                 contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                                 onClick = { onNextWordClick(true) }
                             ) {
-                                Text(text = stringResource(Res.string.flashcards_correct))
+                                Text(text = stringResource(Res.string.correct))
                             }
                         }
                     } else {
@@ -97,7 +97,7 @@ fun FlashcardsGameView(
                             contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                             onClick = onShowMeaningClick
                         ) {
-                            Text(text = stringResource(Res.string.flashcards_show_meaning))
+                            Text(text = stringResource(Res.string.show_meaning))
                         }
                     }
                 }
@@ -123,7 +123,7 @@ fun HiddenFlashcardView(
         Column {
             Icon(
                 modifier = Modifier.size(75.dp),
-                painter = painterResource(Res.drawable.note_stack),
+                painter = painterResource(Res.drawable.ic_note_stack),
                 contentDescription = "",
                 tint = White
             )
@@ -148,7 +148,7 @@ fun VisibleFlashcardView(
     ) {
         Icon(
             modifier = Modifier.size(50.dp),
-            painter = painterResource(Res.drawable.note_stack),
+            painter = painterResource(Res.drawable.ic_note_stack),
             contentDescription = "",
             tint = MaterialTheme.colorScheme.primary
         )

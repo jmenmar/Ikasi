@@ -30,9 +30,9 @@ class OnboardingViewModel(
         }
     }
 
-    fun selectGoalPeriod(goalPeriod: GoalPeriod) {
+    fun upToLevelOne() {
         _state.value = _state.value.copy(
-            selectedPeriod = goalPeriod
+            isLevelOne = true
         )
     }
 
@@ -42,15 +42,8 @@ class OnboardingViewModel(
                 settings = Settings(
                     onboarding = false,
                     startDate = todayLocalDate(),
-                    period = state.value.selectedPeriod!!
                 )
             )
         }
     }
-//
-//    fun setOnboardingState(seen: Boolean) {
-//        viewModelScope.launch {
-//            ikasiRepository.setHasSeenOnboarding(seen = seen)
-//        }
-//    }
 }

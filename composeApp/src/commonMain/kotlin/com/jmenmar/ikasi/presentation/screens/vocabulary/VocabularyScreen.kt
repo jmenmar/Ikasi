@@ -32,7 +32,7 @@ import com.jmenmar.ikasi.presentation.screens.vocabulary.components.AddVocabular
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.VocabularyOverview
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.WordCard
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.vocabulary_search_add
+import ikasi.composeapp.generated.resources.search_add
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -87,7 +87,7 @@ fun VocabularyView(
         BasicTextField(
             modifier = Modifier.padding(bottom = 8.dp),
             value = word,
-            placeholder = stringResource(Res.string.vocabulary_search_add),
+            placeholder = stringResource(Res.string.search_add),
             onValueChange = onWordChange,
             trailingIcon = {
                 if (word.isNotEmpty()) {

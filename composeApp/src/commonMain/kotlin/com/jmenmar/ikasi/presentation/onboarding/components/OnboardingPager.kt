@@ -21,13 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.jmenmar.ikasi.presentation.onboarding.GoalPeriod
 
 @Composable
 fun OnboardingPager(
     modifier: Modifier = Modifier,
-    selectedPeriod: GoalPeriod?,
-    onSelectGoalPeriod: (GoalPeriod) -> Unit = {},
+    isLevelOne: Boolean,
+    onUpToLevelOne: () -> Unit = {},
     onFinish: () -> Unit,
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
@@ -59,9 +58,10 @@ fun OnboardingPager(
                         1 ->
                             SkillsPage()
                         2 -> {
-                            GoalPeriodPage(
-                                selectedPeriod = selectedPeriod,
-                                onSelectPeriod = onSelectGoalPeriod,
+                            LevelsPage(
+                                hasSeen = pagerState.currentPage == 2,
+                                isLevelOne = isLevelOne,
+                                onUpToLevelOne = onUpToLevelOne,
                             )
                         }
                     }
@@ -89,7 +89,7 @@ fun OnboardingPager(
         }
         Box(modifier = Modifier.weight(0.15f)) {
             Button(
-                enabled = selectedPeriod != null,
+                enabled = isLevelOne,
                 shape = RoundedCornerShape(12.dp),
                 contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                 onClick = onFinish,

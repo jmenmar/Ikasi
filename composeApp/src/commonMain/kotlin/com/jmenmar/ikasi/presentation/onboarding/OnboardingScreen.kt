@@ -36,10 +36,10 @@ fun OnboardingScreen(
     }
 
     OnboardingView(
-        selectedPeriod = state.selectedPeriod,
-        onSelectGoalPeriod = { viewModel.selectGoalPeriod(it) },
+        isLevelOne = state.isLevelOne,
+        onUpToLevelOne = { viewModel.upToLevelOne() },
         onFinish = {
-            if (state.selectedPeriod != null) {
+            if (state.isLevelOne) {
                 viewModel.finishOnboarding()
             }
         }
@@ -48,8 +48,8 @@ fun OnboardingScreen(
 
 @Composable
 fun OnboardingView(
-    selectedPeriod: GoalPeriod?,
-    onSelectGoalPeriod: (GoalPeriod) -> Unit = {},
+    isLevelOne: Boolean,
+    onUpToLevelOne: () -> Unit = {},
     onFinish: () -> Unit = {}
 ) {
     Scaffold { innerPadding ->
@@ -60,8 +60,8 @@ fun OnboardingView(
                 .background(MaterialTheme.colorScheme.background)
         ) {
             OnboardingPager(
-                selectedPeriod = selectedPeriod,
-                onSelectGoalPeriod = onSelectGoalPeriod,
+                isLevelOne = isLevelOne,
+                onUpToLevelOne = onUpToLevelOne,
                 onFinish = onFinish
             )
         }

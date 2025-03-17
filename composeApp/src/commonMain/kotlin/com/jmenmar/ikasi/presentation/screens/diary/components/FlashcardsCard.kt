@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.screens.diary.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.ui.Pink
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.home_flashcards
-import ikasi.composeapp.generated.resources.home_flashcards_description
-import ikasi.composeapp.generated.resources.note_stack
+import ikasi.composeapp.generated.resources.flashcards
+import ikasi.composeapp.generated.resources.flashcards_description
+import ikasi.composeapp.generated.resources.ic_note_stack
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -40,18 +40,18 @@ fun FlashcardsCard(
         ) {
             Icon(
                 modifier = Modifier.padding(6.dp).size(20.dp),
-                painter = painterResource(Res.drawable.note_stack),
+                painter = painterResource(Res.drawable.ic_note_stack),
                 contentDescription = "",
                 tint = Pink,
             )
         }
         Spacer(Modifier.height(4.dp))
         Text(
-            text = stringResource(Res.string.home_flashcards),
+            text = stringResource(Res.string.flashcards),
             style = MaterialTheme.typography.bodyLarge
         )
         Text(
-            text = stringResource(Res.string.home_flashcards_description),
+            text = stringResource(Res.string.flashcards_description),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
         )

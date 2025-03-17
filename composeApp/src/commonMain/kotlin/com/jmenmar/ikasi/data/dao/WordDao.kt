@@ -28,6 +28,9 @@ interface WordDao {
     suspend fun updateWord(title: String, meaning: String)
 
     // DELETE
+    @Query("DELETE FROM word")
+    suspend fun deleteAllWords()
+
     @Query("DELETE FROM word WHERE title LIKE :title")
     suspend fun deleteWord(title: String)
 }

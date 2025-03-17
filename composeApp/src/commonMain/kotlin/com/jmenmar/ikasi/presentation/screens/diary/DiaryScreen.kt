@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home
+package com.jmenmar.ikasi.presentation.screens.diary
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,28 +19,33 @@ import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.navigation.MoreRoute
-import com.jmenmar.ikasi.presentation.screens.home.components.ActivityOverview
-import com.jmenmar.ikasi.presentation.screens.home.components.HomeHeader
-import com.jmenmar.ikasi.presentation.screens.home.components.HomeMoreActivities
-import com.jmenmar.ikasi.presentation.screens.home.components.RecentActivityCard
+import com.jmenmar.ikasi.presentation.screens.diary.components.ActivityOverview
+import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryExperienceView
+import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryHeader
+import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryMoreActivities
+import com.jmenmar.ikasi.presentation.screens.diary.components.RecentActivityCard
+import com.jmenmar.ikasi.presentation.screens.diary.components.StreakView
 import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
+import com.jmenmar.ikasi.presentation.utils.LevelProgress
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
-fun HomeScreen(
+fun DiaryScreen(
     navController: NavHostController,
     innerPadding: PaddingValues,
-    viewModel: HomeViewModel = koinViewModel<HomeViewModel>(),
+    viewModel: DiaryViewModel = koinViewModel<DiaryViewModel>(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    HomeView(
+    DiaryView(
         innerPadding = innerPadding,
         totalDays = state.totalDays,
         period = state.period,
         maxValue = state.maxValue,
+        streak = state.streak,
+        totalXp = state.totalXp,
         activities = state.filteredActivities,
         groupedActivities = state.groupedActivities,
         randomWords = state.randomWords,
@@ -51,7 +56,7 @@ fun HomeScreen(
             viewModel.randomizeWords()
         },
         onNavigateToSettings = {
-            navController.navigate(MoreRoute.Activity.route)
+            navController.navigate(MoreRoute.Settings.route)
         },
         onNavigateToFlashcards = {
             navController.navigate(MoreRoute.Flashcards.route)
@@ -60,11 +65,13 @@ fun HomeScreen(
 }
 
 @Composable
-fun HomeView(
+fun DiaryView(
     innerPadding: PaddingValues,
     totalDays: Int,
     period: ActivityPeriod,
     maxValue: Int,
+    streak: Int,
+    totalXp: LevelProgress?,
     activities: List<Activity>,
     groupedActivities: Map<ActivityType, Int>,
     randomWords: List<Word> = emptyList(),
@@ -82,17 +89,24 @@ fun HomeView(
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        HomeHeader(
+        DiaryHeader(
+            days = totalDays,
             onNavigateToSettings = onNavigateToSettings
         )
-        if (groupedActivities.isNotEmpty()) {
+        if (groupedActivities.isNotEmpty() && totalDays > 0) {
             ActivityOverview(
                 totalDays = totalDays,
                 activities = groupedActivities
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
-        HomeMoreActivities(
+        if (totalXp != null) {
+            DiaryExperienceView(
+                totalXp = totalXp,
+            )
+        }
+        StreakView(streak = streak)
+        DiaryMoreActivities(
             randomWords = randomWords,
             randomizeWords = onRandomizeWords,
             onNavigateToFlashcards = onNavigateToFlashcards

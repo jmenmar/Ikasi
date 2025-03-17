@@ -1,52 +1,59 @@
 <resources>
     <string name="app_name">Ikasi</string>
-
+    // Bottom Nav bar
     <string name="home">Home</string>
+    <string name="diary">Diary</string>
     <string name="today">Today</string>
     <string name="vocabulary">Vocabulary</string>
-
-    <string name="grammar_vocabulary">Grammar &amp; Vocabulary</string>
+    // Activities
     <string name="speaking">Speaking</string>
     <string name="listening">Listening</string>
     <string name="reading">Reading</string>
     <string name="writing">Writing</string>
     <string name="theory">Theory</string>
-
+    // Skills
     <string name="oral_understanding">Oral Understanding</string>
     <string name="written_understanding">Written Understanding</string>
     <string name="oral_expression">Oral Expression</string>
     <string name="written_expression">Written Expression</string>
     <string name="fundamentals">Fundamentals</string>
-
+    // Today
     <string name="activities">Activities</string>
     <string name="update">Update</string>
-
-    <string name="home_recent_activity">Recent Activity</string>
-    <string name="home_activity">Activity</string>
-    <string name="home_add">Add</string>
+    <string name="start">Start</string>
+    // Diary
+    <string name="day_x">Day %1$d</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="activity">Activity</string>
+    <string name="add">Add</string>
     <string name="last_week">Last Week</string>
     <string name="one_month">1 Month</string>
     <string name="three_months">3 Months</string>
-    <string name="home_writing_vocabulary">with 3 random words from vocabulary to use.</string>
-    <string name="home_flashcards">Flashcards</string>
-    <string name="home_flashcards_description">Review vocabulary and learn while you play.</string>
-    <string name="home_no_words_enough">No words enough</string>
-
-    <string name="vocabulary_search_add">Search / Add vocabulary</string>
-    <string name="vocabulary_word">Word</string>
-    <string name="vocabulary_meaning">Meaning</string>
-    <string name="vocabulary_notes_optional">Notes (optional)</string>
-    <string name="vocabulary_add">Add Vocabulary</string>
-    <string name="vocabulary_entries">%1$d entries</string>
-
-    <string name="flashcards_start">Start</string>
-    <string name="flashcards_add_vocabulary">Add Vocabulary</string>
-    <string name="flashcards_show_meaning">Show meaning</string>
-    <string name="flashcards_correct">Correct</string>
-    <string name="flashcards_incorrect">Incorrect</string>
-    <string name="flashcards_no_flashcards">No Flashcards</string>
-
+    <string name="writing_vocabulary">with 3 random words from vocabulary to use.</string>
+    <string name="flashcards">Flashcards</string>
+    <string name="flashcards_description">Review vocabulary and learn while you play.</string>
+    <string name="no_words_enough">No words enough</string>
+    <string name="streak">Streak</string>
+    // Vocabulary
+    <string name="search_add">Search / Add vocabulary</string>
+    <string name="word">Word</string>
+    <string name="meaning">Meaning</string>
+    <string name="notes_optional">Notes (optional)</string>
+    <string name="add_vocabulary">Add Vocabulary</string>
+    <string name="entries">%1$d entries</string>
+    // Flashcards
+    <string name="show_meaning">Show meaning</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="no_flashcards">No Flashcards</string>
+    // Goals
     <string name="goal_365_days">365 days</string>
     <string name="goal_100_days">100 days</string>
+    // Settings
+    <string name="settings">Settings</string>
+    <string name="reset_progress">Reset progress</string>
+    <string name="are_you_sure_reset_progress">Are you sure you want to reset all the progress?</string>
+    <string name="delete_vocabulary">Delete vocabulary</string>
+    <string name="confirm">Confirm</string>
 
 </resources>

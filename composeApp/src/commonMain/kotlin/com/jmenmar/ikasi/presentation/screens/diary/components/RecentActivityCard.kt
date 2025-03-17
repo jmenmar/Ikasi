@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.screens.diary.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +27,7 @@ import com.jmenmar.ikasi.presentation.components.AnimatedLinearProgressIndicator
 import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.home_recent_activity
+import ikasi.composeapp.generated.resources.recent_activity
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -39,7 +39,7 @@ fun RecentActivityCard(
     onPeriodChange: (ActivityPeriod) -> Unit = {},
 ) {
     BasicCard(
-        title = stringResource(Res.string.home_recent_activity),
+        title = stringResource(Res.string.recent_activity),
     ) {
         ActivityType.entries.sortedBy { it.priority }.forEach {
             val progress = if (maxValue <= 0) {

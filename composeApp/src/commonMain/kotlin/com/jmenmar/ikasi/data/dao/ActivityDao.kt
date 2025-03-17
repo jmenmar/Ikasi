@@ -15,10 +15,16 @@ interface ActivityDao {
     suspend fun insertActivity(activity: ActivityEntity)
 
     // SELECT
+    @Query("SELECT * FROM activity")
+    fun getAllActivities(): Flow<List<ActivityEntity>>
+
     @Query("SELECT * FROM activity WHERE date >= :dateFrom AND date <= :dateTo")
     fun getActivities(dateFrom: Int, dateTo: Int): Flow<List<ActivityEntity>>
 
     // DELETE
+    @Query("DELETE FROM activity")
+    suspend fun deleteAllActivities()
+
     @Query("DELETE FROM activity WHERE type = :type AND date = :date")
     suspend fun deleteActivity(type: ActivityType, date: Int)
 }

@@ -1,13 +1,13 @@
-package com.jmenmar.ikasi.presentation.screens.home
+package com.jmenmar.ikasi.presentation.screens.diary
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jmenmar.ikasi.core.allBanners
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
 import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import com.jmenmar.ikasi.presentation.utils.beforeDate
+import com.jmenmar.ikasi.presentation.utils.calculateLevelAndProgress
+import com.jmenmar.ikasi.presentation.utils.calculateStreak
 import com.jmenmar.ikasi.presentation.utils.toLocalDate
 import com.jmenmar.ikasi.presentation.utils.todayInstant
 import com.jmenmar.ikasi.presentation.utils.todayLocalDate
@@ -17,46 +17,50 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.daysUntil
 import kotlinx.datetime.minus
 
-class HomeViewModel(
+class DiaryViewModel(
     private val ikasiRepository: IkasiRepository
 ): ViewModel() {
-    private val _state = MutableStateFlow(HomeState())
-    val state: StateFlow<HomeState> = _state
+    private val _state = MutableStateFlow(DiaryState())
+    val state: StateFlow<DiaryState> = _state
 
     init {
-        getDays()
+        getSettings()
         getActivities()
         randomizeWords()
     }
 
-    private fun getDays() {
-        _state.value = _state.value.copy(
-            totalDays = 1
-        )
-    }
-
-    private fun getActivities() {
+    private fun getSettings() {
         viewModelScope.launch {
-            ikasiRepository.getActivities(
-                dateFrom = beforeDate(value = 1, unit = DateTimeUnit.YEAR),
-                dateTo = todayLocalDate().toEpochDays()
-            ).collect { allActivities ->
-                updateState(allActivities)
-                loadBanners()
+            ikasiRepository.getSettings().collect { settings ->
+                if (settings != null) {
+                    _state.value = _state.value.copy(
+                        totalDays = settings.startDate.daysUntil(todayLocalDate()) + 1
+                    )
+                }
             }
         }
     }
 
-    private fun updateState(allActivities: List<Activity>) {
+    private fun getActivities() {
+        viewModelScope.launch {
+            ikasiRepository.getAllActivities().collect { allActivities ->
+                updateActivitiesState(allActivities)
+            }
+        }
+    }
+
+    private fun updateActivitiesState(allActivities: List<Activity>) {
         val filtered = filterActivitiesByPeriod(allActivities, state.value.period)
         _state.value = state.value.copy(
             totalActivities = allActivities,
             filteredActivities = filtered,
             groupedActivities = groupActivitiesByType(allActivities),
+            streak = calculateStreak(allActivities),
+            totalXp = calculateLevelAndProgress(totalXp = allActivities.sumOf { it.time }),
             maxValue = filtered.groupBy { it.type }.maxByOrNull { it.value.size }?.value?.size
                 ?: 0,
         )
@@ -82,11 +86,7 @@ class HomeViewModel(
         _state.value = _state.value.copy(
             period = period,
         )
-        updateState(state.value.totalActivities)
-    }
-
-    private fun loadBanners() {
-        _state.value = _state.value.copy(banners = allBanners)
+        updateActivitiesState(state.value.totalActivities)
     }
 
     fun randomizeWords() {

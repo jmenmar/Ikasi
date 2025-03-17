@@ -24,8 +24,8 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun BottomNavBar(navController: NavHostController) {
     val screens = listOf(
-        BottomNavRoute.Home,
         BottomNavRoute.Today,
+        BottomNavRoute.Diary,
         BottomNavRoute.Vocabulary,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()

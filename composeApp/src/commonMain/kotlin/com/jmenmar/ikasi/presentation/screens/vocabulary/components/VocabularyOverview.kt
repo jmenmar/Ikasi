@@ -14,9 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.note_stack
+import ikasi.composeapp.generated.resources.ic_note_stack
 import ikasi.composeapp.generated.resources.vocabulary
-import ikasi.composeapp.generated.resources.vocabulary_entries
+import ikasi.composeapp.generated.resources.entries
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -35,7 +35,7 @@ fun VocabularyOverview(
         Spacer(modifier = Modifier.height(32.dp))
         Icon(
             modifier = Modifier.size(100.dp),
-            painter = painterResource(Res.drawable.note_stack),
+            painter = painterResource(Res.drawable.ic_note_stack),
             contentDescription = "",
             tint = MaterialTheme.colorScheme.surface
         )
@@ -46,7 +46,7 @@ fun VocabularyOverview(
         )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            text = stringResource(Res.string.vocabulary_entries, totalWords),
+            text = stringResource(Res.string.entries, totalWords),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.surface
         )

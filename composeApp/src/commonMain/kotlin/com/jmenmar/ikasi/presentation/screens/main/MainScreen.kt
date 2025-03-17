@@ -9,12 +9,14 @@ import com.jmenmar.ikasi.presentation.navigation.NavigationGraph
 
 @Composable
 fun MainScreen(
+    mainNavController: NavHostController,
     navController: NavHostController = rememberNavController()
 ) {
     Scaffold(
         bottomBar = { BottomNavBar(navController) }
     ) { innerPadding ->
         NavigationGraph(
+            mainNavController = mainNavController,
             navController = navController,
             innerPadding = innerPadding,
         )

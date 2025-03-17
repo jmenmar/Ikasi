@@ -8,14 +8,17 @@ import kotlinx.coroutines.flow.Flow
 interface IkasiRepository {
     suspend fun newActivity(activity: Activity): Result<Boolean>
     suspend fun getActivities(dateFrom: Int, dateTo: Int): Flow<List<Activity>>
+    suspend fun getAllActivities(): Flow<List<Activity>>
     suspend fun deleteActivity(activity: Activity): Result<Boolean>
+    suspend fun deleteAllActivities(): Result<Boolean>
 
     suspend fun getAllWords(): Flow<List<Word>>
     suspend fun newWord(word: Word): Result<Boolean>
     suspend fun deleteWord(word: Word): Result<Boolean>
+    suspend fun deleteAllWords(): Result<Boolean>
     suspend fun getRandomWords(length: Int): List<Word>
 
     suspend fun getSettings(): Flow<Settings?>
     suspend fun newSettings(settings: Settings): Result<Boolean>
-    suspend fun isOnboardingCompleted(): Boolean?
+    suspend fun deleteSettings(): Result<Boolean>
 }

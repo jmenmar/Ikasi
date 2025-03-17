@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.screens.diary.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -23,10 +23,10 @@ import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.ui.Blue
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.flashcards_add_vocabulary
-import ikasi.composeapp.generated.resources.home_no_words_enough
-import ikasi.composeapp.generated.resources.home_writing_vocabulary
-import ikasi.composeapp.generated.resources.pencil
+import ikasi.composeapp.generated.resources.add_vocabulary
+import ikasi.composeapp.generated.resources.no_words_enough
+import ikasi.composeapp.generated.resources.writing_vocabulary
+import ikasi.composeapp.generated.resources.ic_pencil
 import ikasi.composeapp.generated.resources.writing
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -56,7 +56,7 @@ fun RandomWritingCard(
         ) {
             Icon(
                 modifier = Modifier.padding(6.dp).size(20.dp),
-                painter = painterResource(Res.drawable.pencil),
+                painter = painterResource(Res.drawable.ic_pencil),
                 contentDescription = "",
                 tint = Blue,
             )
@@ -68,7 +68,7 @@ fun RandomWritingCard(
                 style = MaterialTheme.typography.bodyLarge
             )
             Text(
-                text = stringResource(Res.string.home_writing_vocabulary),
+                text = stringResource(Res.string.writing_vocabulary),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
             )
@@ -84,11 +84,11 @@ fun RandomWritingCard(
                 }
             } else {
                 Text(
-                    text = stringResource(Res.string.home_no_words_enough),
+                    text = stringResource(Res.string.no_words_enough),
                     style = MaterialTheme.typography.bodyLarge,
                 )
                 Text(
-                    text = stringResource(Res.string.flashcards_add_vocabulary),
+                    text = stringResource(Res.string.add_vocabulary),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                 )

@@ -7,10 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jmenmar.ikasi.presentation.onboarding.OnboardingScreen
-import com.jmenmar.ikasi.presentation.screens.activity.ActivityScreen
 import com.jmenmar.ikasi.presentation.screens.flashcards.FlashcardsScreen
-import com.jmenmar.ikasi.presentation.screens.home.HomeScreen
+import com.jmenmar.ikasi.presentation.screens.diary.DiaryScreen
 import com.jmenmar.ikasi.presentation.screens.main.MainScreen
+import com.jmenmar.ikasi.presentation.screens.settings.SettingsScreen
 import com.jmenmar.ikasi.presentation.screens.splash.SplashScreen
 import com.jmenmar.ikasi.presentation.screens.today.TodayScreen
 import com.jmenmar.ikasi.presentation.screens.vocabulary.VocabularyScreen
@@ -35,13 +35,16 @@ fun Navigation(
             )
         }
         composable(NavigationRoute.Main.route) {
-            MainScreen()
+            MainScreen(
+                mainNavController = mainNavController
+            )
         }
     }
 }
 
 @Composable
 fun NavigationGraph(
+    mainNavController: NavHostController,
     navController: NavHostController,
     innerPadding: PaddingValues,
 ) {
@@ -49,8 +52,8 @@ fun NavigationGraph(
         navController = navController,
         startDestination = BottomNavRoute.Today.route
     ) {
-        composable(route = BottomNavRoute.Home.route) {
-            HomeScreen(
+        composable(route = BottomNavRoute.Diary.route) {
+            DiaryScreen(
                 navController = navController,
                 innerPadding = innerPadding,
             )
@@ -70,9 +73,10 @@ fun NavigationGraph(
                 navController = navController
             )
         }
-        composable(route = MoreRoute.Activity.route) {
-            ActivityScreen(
-                navController = navController
+        composable(route = MoreRoute.Settings.route) {
+            SettingsScreen(
+                mainNavController = mainNavController,
+                navController = navController,
             )
         }
     }

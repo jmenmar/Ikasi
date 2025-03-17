@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.screens.diary.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.domain.model.Word
 
 @Composable
-fun HomeMoreActivities(
+fun DiaryMoreActivities(
     randomWords: List<Word> = emptyList(),
     randomizeWords: () -> Unit = {},
     onNavigateToFlashcards: () -> Unit = {}

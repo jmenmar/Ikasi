@@ -28,9 +28,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.vocabulary_add
-import ikasi.composeapp.generated.resources.vocabulary_meaning
-import ikasi.composeapp.generated.resources.vocabulary_notes_optional
+import ikasi.composeapp.generated.resources.add
+import ikasi.composeapp.generated.resources.meaning
+import ikasi.composeapp.generated.resources.notes_optional
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -62,7 +62,7 @@ fun AddVocabularyView(
                     .padding(horizontal = 42.dp),
                 value = meaning,
                 placeholder = {
-                    Text(text = stringResource(Res.string.vocabulary_meaning))
+                    Text(text = stringResource(Res.string.meaning))
                 },
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(
@@ -74,7 +74,7 @@ fun AddVocabularyView(
                     focusManager.moveFocus(FocusDirection.Next)
                 }),
                 onValueChange = { onMeaningChange(it) },
-                label = { Text(text = stringResource(Res.string.vocabulary_meaning)) }
+                label = { Text(text = stringResource(Res.string.meaning)) }
             )
             OutlinedTextField(
                 modifier = Modifier
@@ -82,7 +82,7 @@ fun AddVocabularyView(
                     .padding(horizontal = 42.dp),
                 value = notes?: "",
                 placeholder = {
-                    Text(text = stringResource(Res.string.vocabulary_notes_optional))
+                    Text(text = stringResource(Res.string.notes_optional))
                 },
                 minLines = 5,
                 maxLines = 5,
@@ -91,7 +91,7 @@ fun AddVocabularyView(
                     keyboardType = KeyboardType.Text,
                 ),
                 onValueChange = { onNotesChange(it) },
-                label = { Text(text = stringResource(Res.string.vocabulary_notes_optional)) }
+                label = { Text(text = stringResource(Res.string.notes_optional)) }
             )
             Spacer(modifier = Modifier.height(12.dp))
             Button(
@@ -106,7 +106,7 @@ fun AddVocabularyView(
                         imageVector = Icons.Default.Add,
                         contentDescription = ""
                     )
-                    Text(text = stringResource(Res.string.vocabulary_add))
+                    Text(text = stringResource(Res.string.add))
                 }
             }
         }

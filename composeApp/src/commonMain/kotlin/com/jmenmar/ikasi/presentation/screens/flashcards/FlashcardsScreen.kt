@@ -22,7 +22,7 @@ import com.jmenmar.ikasi.presentation.screens.flashcards.components.FlashcardsCo
 import com.jmenmar.ikasi.presentation.screens.flashcards.components.FlashcardsFinishView
 import com.jmenmar.ikasi.presentation.screens.flashcards.components.FlashcardsGameView
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.home_flashcards
+import ikasi.composeapp.generated.resources.flashcards
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -79,7 +79,7 @@ fun FlashcardsView(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = stringResource(Res.string.home_flashcards))
+                    Text(text = stringResource(Res.string.flashcards))
                 },
                 navigationIcon = {
                     IconButton(

@@ -22,11 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.ui.Pink
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.flashcards_add_vocabulary
-import ikasi.composeapp.generated.resources.flashcards_no_flashcards
-import ikasi.composeapp.generated.resources.flashcards_start
-import ikasi.composeapp.generated.resources.home_flashcards
-import ikasi.composeapp.generated.resources.note_stack
+import ikasi.composeapp.generated.resources.add_vocabulary
+import ikasi.composeapp.generated.resources.no_flashcards
+import ikasi.composeapp.generated.resources.flashcards
+import ikasi.composeapp.generated.resources.ic_note_stack
+import ikasi.composeapp.generated.resources.start
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -51,15 +51,15 @@ fun FlashcardsCoverView(
                 ) {
                     Icon(
                         modifier = Modifier.size(100.dp),
-                        painter = painterResource(Res.drawable.note_stack),
+                        painter = painterResource(Res.drawable.ic_note_stack),
                         contentDescription = "",
-                        tint = Pink
+                        tint = MaterialTheme.colorScheme.surface
                     )
                     Text(
-                        text = if (!emptyFlashcards) stringResource(Res.string.home_flashcards)
-                        else stringResource(Res.string.flashcards_no_flashcards),
+                        text = if (!emptyFlashcards) stringResource(Res.string.flashcards)
+                        else stringResource(Res.string.no_flashcards),
                         style = MaterialTheme.typography.displaySmall,
-                        color = Pink
+                        color = MaterialTheme.colorScheme.surface
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     if (!emptyFlashcards) {
@@ -73,7 +73,7 @@ fun FlashcardsCoverView(
                         ) {
                             Text(
                                 modifier = Modifier.padding(horizontal = 24.dp),
-                                text = stringResource(Res.string.flashcards_start)
+                                text = stringResource(Res.string.start)
                             )
                         }
                     } else {
@@ -82,7 +82,7 @@ fun FlashcardsCoverView(
                             contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                             onClick = onNavigateToVocabulary
                         ) {
-                            Text(text = stringResource(Res.string.flashcards_add_vocabulary))
+                            Text(text = stringResource(Res.string.add_vocabulary))
                         }
                     }
 

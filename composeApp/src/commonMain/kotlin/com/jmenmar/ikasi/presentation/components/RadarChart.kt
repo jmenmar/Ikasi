@@ -61,6 +61,7 @@ fun RadarChart(
     LaunchedEffect(values) {
         values.forEachIndexed { i, value ->
             value.forEachIndexed { j, fl ->
+                if (fl.isNaN()) return@forEachIndexed
                 launch {
                     animationValues[i][j].animateTo(fl, animationSpec = tween(durationMillis = durationMillis))
                 }

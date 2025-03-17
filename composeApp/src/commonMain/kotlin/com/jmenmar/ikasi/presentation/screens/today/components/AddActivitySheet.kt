@@ -41,7 +41,7 @@ import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.presentation.screens.today.ActivityTime
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.home_add
+import ikasi.composeapp.generated.resources.add
 import ikasi.composeapp.generated.resources.update
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -169,7 +169,7 @@ fun AddActivitySheet(
                         )
                         Text(
                             text = if (activity != null) stringResource(Res.string.update)
-                            else stringResource(Res.string.home_add),
+                            else stringResource(Res.string.add),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }

@@ -11,7 +11,6 @@ import com.jmenmar.ikasi.domain.model.Settings.Companion.toEntity
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.domain.model.Word.Companion.toEntity
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.map
 
 class IkasiRepositoryImpl(
@@ -34,12 +33,28 @@ class IkasiRepositoryImpl(
                 }
             }
 
+    override suspend fun getAllActivities() =
+        ikasiDatabase.activityDao().getAllActivities().map { list ->
+            list.map { activity ->
+                activity.toDomain()
+            }
+        }
+
     override suspend fun deleteActivity(activity: Activity): Result<Boolean> {
         return try {
             ikasiDatabase.activityDao().deleteActivity(
                 type = activity.type,
                 date = activity.toEntity().date
             )
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun deleteAllActivities(): Result<Boolean> {
+        return try {
+            ikasiDatabase.activityDao().deleteAllActivities()
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)
@@ -73,6 +88,15 @@ class IkasiRepositoryImpl(
         }
     }
 
+    override suspend fun deleteAllWords(): Result<Boolean> {
+        return try {
+            ikasiDatabase.wordDao().deleteAllWords()
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     override suspend fun getRandomWords(length: Int): List<Word> {
         return try {
             val words = ikasiDatabase.wordDao().getRandomWords(length = length).map {
@@ -96,7 +120,12 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun isOnboardingCompleted(): Boolean? {
-        return ikasiDatabase.settingsDao().getSettings().map { it?.toDomain()?.onboarding }.last()
+    override suspend fun deleteSettings(): Result<Boolean> {
+        return try {
+            ikasiDatabase.settingsDao().deleteSettings()
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }

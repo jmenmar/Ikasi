@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.screens.home.components
+package com.jmenmar.ikasi.presentation.screens.diary.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -14,11 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.home
+import ikasi.composeapp.generated.resources.day_x
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeHeader(
+fun DiaryHeader(
+    days: Int,
     onNavigateToSettings: () -> Unit = {}
 ) {
     Row(
@@ -26,7 +27,7 @@ fun HomeHeader(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = stringResource(Res.string.home),
+            text = stringResource(Res.string.day_x, days),
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.weight(1f)
         )
