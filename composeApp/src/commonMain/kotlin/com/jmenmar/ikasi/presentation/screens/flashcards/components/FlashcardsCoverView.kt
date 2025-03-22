@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,12 +21,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jmenmar.ikasi.ui.Pink
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.add_vocabulary
-import ikasi.composeapp.generated.resources.no_flashcards
 import ikasi.composeapp.generated.resources.flashcards
 import ikasi.composeapp.generated.resources.ic_note_stack
+import ikasi.composeapp.generated.resources.no_flashcards
 import ikasi.composeapp.generated.resources.start
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -44,6 +44,7 @@ fun FlashcardsCoverView(
             item {
                 Column(
                     modifier = Modifier
+                        .fillMaxWidth()
                         .padding(16.dp)
                         .padding(bottom = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),

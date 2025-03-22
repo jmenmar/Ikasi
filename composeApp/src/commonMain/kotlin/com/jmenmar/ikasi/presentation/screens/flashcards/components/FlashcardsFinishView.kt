@@ -19,8 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.ui.GreyMedium
-import com.jmenmar.ikasi.ui.Pink
 import com.jmenmar.ikasi.ui.White
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.correct
+import ikasi.composeapp.generated.resources.incorrect
+import ikasi.composeapp.generated.resources.result_x
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun FlashcardsFinishView(
@@ -52,11 +56,11 @@ fun FlashcardsFinishView(
                                 Text(
                                     text = "$correct",
                                     style = MaterialTheme.typography.displayLarge,
-                                    color = Pink
+                                    color = MaterialTheme.colorScheme.primary
                                 )
                                 Text(
-                                    text = "correct",
-                                    color = Pink
+                                    text = stringResource(Res.string.correct),
+                                    color = MaterialTheme.colorScheme.primary
                                 )
                             }
                             Column(
@@ -69,7 +73,7 @@ fun FlashcardsFinishView(
                                     color = GreyMedium
                                 )
                                 Text(
-                                    text = "incorrect",
+                                    text = stringResource(Res.string.incorrect),
                                     color = GreyMedium
                                 )
                             }
@@ -78,8 +82,14 @@ fun FlashcardsFinishView(
                 }
                 Spacer(modifier = Modifier.height(32.dp))
                 Text(
-                    modifier = Modifier.fillMaxWidth().background(Pink).padding(vertical = 8.dp),
-                    text = "Result ${(correct.toFloat() / (correct + incorrect) * 100).toInt()} %",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.primary)
+                        .padding(vertical = 8.dp),
+                    text = stringResource(
+                        Res.string.result_x,
+                        (correct.toFloat() / (correct + incorrect) * 100).toInt()
+                    ),
                     style = MaterialTheme.typography.headlineSmall,
                     color = White,
                     textAlign = TextAlign.Center,

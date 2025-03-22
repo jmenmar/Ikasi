@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.components.BasicCard
@@ -51,8 +52,8 @@ fun FlashcardsGameView(
             item {
                 Column(
                     modifier = Modifier
-                        .padding(16.dp)
-                        .padding(bottom = 16.dp),
+                        .fillMaxWidth()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
@@ -120,7 +121,9 @@ fun HiddenFlashcardView(
         containerColor = MaterialTheme.colorScheme.primary,
         contentColor = MaterialTheme.colorScheme.onPrimary,
     ) {
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Icon(
                 modifier = Modifier.size(75.dp),
                 painter = painterResource(Res.drawable.ic_note_stack),
@@ -128,7 +131,12 @@ fun HiddenFlashcardView(
                 tint = White
             )
             Spacer(modifier = Modifier.weight(1f))
-            Text(text = word.title, style = MaterialTheme.typography.titleLarge)
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = word.title,
+                style = MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Center
+            )
             Spacer(modifier = Modifier.weight(1f))
         }
     }
@@ -154,17 +162,21 @@ fun VisibleFlashcardView(
         )
         Text(
             text = word.title,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleMedium,
+            textAlign = TextAlign.Center
         )
         Text(
             text = word.meaning,
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center
         )
         word.notes?.let {
             Text(
+                modifier = Modifier.fillMaxWidth(),
                 text = word.notes,
                 fontStyle = FontStyle.Italic,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                textAlign = TextAlign.Center
             )
         }
     }

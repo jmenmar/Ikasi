@@ -25,8 +25,8 @@ fun ActivityOverview(
 ) {
     val max = when {
         activities.isEmpty() -> 1
-        (activities.values.max() > totalDays * 60) -> activities.values.max()
-        else -> totalDays * 60
+        (activities.values.max() > totalDays * 30) -> activities.values.max()
+        else -> totalDays * 30
     }
 
     Column(

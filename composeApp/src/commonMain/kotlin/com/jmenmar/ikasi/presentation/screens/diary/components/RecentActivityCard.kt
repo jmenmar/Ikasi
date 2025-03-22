@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -26,8 +28,7 @@ import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.presentation.components.AnimatedLinearProgressIndicator
 import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import ikasi.composeapp.generated.resources.Res
-import ikasi.composeapp.generated.resources.recent_activity
+import com.jmenmar.ikasi.presentation.utils.formatMinutesToHours
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -38,14 +39,13 @@ fun RecentActivityCard(
     activities: List<Activity>,
     onPeriodChange: (ActivityPeriod) -> Unit = {},
 ) {
-    BasicCard(
-        title = stringResource(Res.string.recent_activity),
-    ) {
+    BasicCard {
         ActivityType.entries.sortedBy { it.priority }.forEach {
             val progress = if (maxValue <= 0) {
                 0f
             } else {
-                activities.filter { activity -> activity.type == it }.size.toFloat() / maxValue.toFloat()
+                activities.filter { activity ->
+                    activity.type == it }.size.toFloat() / maxValue.toFloat()
             }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -57,7 +57,9 @@ fun RecentActivityCard(
                         .background(color = it.color)
                 ) {
                     Icon(
-                        modifier = Modifier.size(30.dp).padding(5.dp),
+                        modifier = Modifier
+                            .size(30.dp)
+                            .padding(5.dp),
                         painter = painterResource(it.icon),
                         contentDescription = "",
                         tint = MaterialTheme.colorScheme.onPrimary,
@@ -67,16 +69,35 @@ fun RecentActivityCard(
                     modifier = Modifier.weight(3f),
                     text = stringResource(it.title)
                 )
-                AnimatedLinearProgressIndicator(
+                Box(
                     modifier = Modifier
                         .weight(6f)
-                        .height(8.dp)
-                        .clip(RoundedCornerShape(4.dp)),
-                    indicatorProgress = progress,
-                    color = it.color,
-                    trackColor = MaterialTheme.colorScheme.background,
-                    gapSize = 0.dp,
-                )
+                        .height(12.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                ) {
+                    AnimatedLinearProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(12.dp),
+                        indicatorProgress = progress,
+                        color = it.color,
+                        trackColor = MaterialTheme.colorScheme.background,
+                        gapSize = 0.dp,
+                    )
+                    Text(
+                        modifier = Modifier
+                            .wrapContentHeight()
+                            .align(Alignment.CenterEnd)
+                            .offset(y = (-1).dp)
+                            .padding(end = 4.dp),
+                        text = formatMinutesToHours(
+                            activities
+                                .filter { activity -> activity.type == it }
+                                .sumOf { it.time }
+                        ),
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                }
             }
         }
         HorizontalDivider()

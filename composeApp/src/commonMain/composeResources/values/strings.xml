@@ -46,6 +46,7 @@
     <string name="correct">Correct</string>
     <string name="incorrect">Incorrect</string>
     <string name="no_flashcards">No Flashcards</string>
+    <string name="result_x">Result %1$s%</string>
     // Goals
     <string name="goal_365_days">365 days</string>
     <string name="goal_100_days">100 days</string>
