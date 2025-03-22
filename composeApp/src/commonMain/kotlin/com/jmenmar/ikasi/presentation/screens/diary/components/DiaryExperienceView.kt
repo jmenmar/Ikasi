@@ -28,6 +28,11 @@ import com.jmenmar.ikasi.presentation.components.BasicCard
 import com.jmenmar.ikasi.presentation.utils.LevelProgress
 import com.jmenmar.ikasi.presentation.utils.formatMinutesToHours
 import com.jmenmar.ikasi.ui.BlueDarkest
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.experience_x
+import ikasi.composeapp.generated.resources.level_x
+import ikasi.composeapp.generated.resources.next_level_x
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun DiaryExperienceView(
@@ -35,12 +40,11 @@ fun DiaryExperienceView(
 ) {
     var progress by remember { mutableFloatStateOf(0f) }
 
-    // animation
     val progressAnimate by animateFloatAsState(
         targetValue = progress,
         animationSpec = tween(
-            durationMillis = 1500,//animation duration
-            delayMillis = 250,//delay before animation start
+            durationMillis = 1500,
+            delayMillis = 250,
             easing = LinearOutSlowInEasing
         )
     )
@@ -73,18 +77,24 @@ fun DiaryExperienceView(
                 modifier = Modifier.weight(1f),
             ) {
                 Text(
-                    text = "Level ${totalXp.level}",
+                    text = stringResource(Res.string.level_x, totalXp.level),
                     style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = "Experience: ${formatMinutesToHours(totalXp.totalXp)}",
+                    text = stringResource(
+                        Res.string.experience_x,
+                        formatMinutesToHours(totalXp.totalXp)
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 if (totalXp.level < 100) {
                     Spacer(Modifier.height(3.dp))
                     Text(
-                        text = "Next Level: ${formatMinutesToHours(totalXp.totalXp - totalXp.currentLevelXp + totalXp.requiredXp)}",
+                        text = stringResource(
+                            Res.string.next_level_x,
+                            formatMinutesToHours(totalXp.totalXp - totalXp.currentLevelXp + totalXp.requiredXp)
+                        ),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }

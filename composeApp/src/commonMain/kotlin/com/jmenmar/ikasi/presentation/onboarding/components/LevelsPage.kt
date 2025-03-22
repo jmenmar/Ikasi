@@ -26,6 +26,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.ui.Blue
 import com.jmenmar.ikasi.ui.BlueDarkest
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.level_x
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LevelsPage(
@@ -80,7 +83,7 @@ fun LevelsPage(
                 }
             }
             Text(
-                text = if (isLevelOne) "Level 1" else "Level 0",
+                text =  stringResource(Res.string.level_x, if (isLevelOne) 1 else 0),
                 style = MaterialTheme.typography.titleLarge
             )
         }

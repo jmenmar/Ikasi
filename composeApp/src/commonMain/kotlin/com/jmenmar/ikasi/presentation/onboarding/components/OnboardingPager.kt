@@ -21,10 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.start
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun OnboardingPager(
-    modifier: Modifier = Modifier,
     isLevelOne: Boolean,
     onUpToLevelOne: () -> Unit = {},
     onFinish: () -> Unit,
@@ -96,7 +98,7 @@ fun OnboardingPager(
             ) {
                 Text(
                     modifier = Modifier.padding(horizontal = 24.dp),
-                    text = "Start"
+                    text = stringResource(Res.string.start)
                 )
             }
         }

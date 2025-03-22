@@ -17,6 +17,8 @@
     <string name="oral_expression">Oral Expression</string>
     <string name="written_expression">Written Expression</string>
     <string name="fundamentals">Fundamentals</string>
+    // Onboarding
+    <string name="level_x">Level %1$d</string>
     // Today
     <string name="activities">Activities</string>
     <string name="update">Update</string>
@@ -34,6 +36,8 @@
     <string name="flashcards_description">Review vocabulary and learn while you play.</string>
     <string name="no_words_enough">No words enough</string>
     <string name="streak">Streak</string>
+    <string name="experience_x">Experience: %1$d</string>
+    <string name="next_level_x">Next Level: %1$d</string>
     // Vocabulary
     <string name="search_add">Search / Add vocabulary</string>
     <string name="word">Word</string>
