@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,20 +20,54 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.jmenmar.ikasi.presentation.utils.toStringFormat
 import com.jmenmar.ikasi.ui.Pink
 import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.dark_mode
 import ikasi.composeapp.generated.resources.reset_progress
+import ikasi.composeapp.generated.resources.start_date
+import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SettingsContent(
     modifier: Modifier = Modifier,
+    isDarkTheme: Boolean,
+    startDate: LocalDate,
+    onThemeChange: (Boolean) -> Unit = {},
     onReset: () -> Unit = {}
 ) {
     Column(
         modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 24.dp),
         horizontalAlignment = CenterHorizontally
     ) {
+        Row(
+            modifier = Modifier.padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(Res.string.dark_mode),
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            ThemeSwitch(
+                isDarkThemeSelected = isDarkTheme,
+                onSwitchTheme = onThemeChange
+            )
+        }
+        HorizontalDivider()
+        Row(
+            modifier = Modifier.padding(vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(Res.string.start_date),
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = startDate.toStringFormat(),
+            )
+        }
+        HorizontalDivider()
         Spacer(modifier = Modifier.weight(1f))
         Button(
             shape = RoundedCornerShape(12.dp),

@@ -73,7 +73,8 @@ fun RecentActivityCard(
                     modifier = Modifier
                         .weight(6f)
                         .height(12.dp)
-                        .clip(RoundedCornerShape(4.dp))
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(MaterialTheme.colorScheme.background)
                 ) {
                     AnimatedLinearProgressIndicator(
                         modifier = Modifier

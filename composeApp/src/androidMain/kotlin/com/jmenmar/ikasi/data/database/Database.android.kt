@@ -10,5 +10,6 @@ fun getDatabase(context: Context): IkasiDatabase {
     return Room.databaseBuilder<IkasiDatabase>(context, dbFile.absolutePath)
         .setDriver(BundledSQLiteDriver())
         .setQueryCoroutineContext(Dispatchers.IO)
+        .fallbackToDestructiveMigration(false)
         .build()
 }

@@ -29,3 +29,4 @@ fun dayLocalDate(value: Long): LocalDate =
 
 fun Instant.toLocalDate() = this.toLocalDateTime(timeZone = TimeZone.UTC).date
 
+fun LocalDate.toStringFormat() = "${this.dayOfMonth}/${this.monthNumber}/${this.year}"

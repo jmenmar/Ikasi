@@ -64,6 +64,7 @@ kotlin {
             implementation(libs.androidx.sqlite.bundled)
             // DateTime
             implementation(libs.kotlinx.datetime)
+
         }
     }
 }
@@ -78,6 +79,15 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true",
+                    "room.expandProjection" to "true"
+                )
+            }
+        }
     }
     packaging {
         resources {

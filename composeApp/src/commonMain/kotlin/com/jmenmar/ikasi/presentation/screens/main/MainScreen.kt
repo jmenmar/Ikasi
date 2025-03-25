@@ -10,7 +10,8 @@ import com.jmenmar.ikasi.presentation.navigation.NavigationGraph
 @Composable
 fun MainScreen(
     mainNavController: NavHostController,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    onThemeChange: (Boolean) -> Unit,
 ) {
     Scaffold(
         bottomBar = { BottomNavBar(navController) }
@@ -19,6 +20,7 @@ fun MainScreen(
             mainNavController = mainNavController,
             navController = navController,
             innerPadding = innerPadding,
+            onThemeChange = onThemeChange
         )
     }
 }

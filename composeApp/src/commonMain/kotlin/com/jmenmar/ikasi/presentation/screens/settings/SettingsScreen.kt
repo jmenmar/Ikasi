@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.jmenmar.ikasi.domain.model.Settings
 import com.jmenmar.ikasi.presentation.navigation.NavigationRoute
 import com.jmenmar.ikasi.presentation.screens.settings.components.ConfirmResetView
 import com.jmenmar.ikasi.presentation.screens.settings.components.SettingsContent
@@ -33,6 +35,7 @@ fun SettingsScreen(
     mainNavController: NavHostController,
     navController: NavHostController,
     viewModel: SettingsViewModel = koinViewModel<SettingsViewModel>(),
+    onThemeChange: (Boolean) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -47,8 +50,14 @@ fun SettingsScreen(
     }
 
     SettingsView(
+        settings = state.settings,
         isConfirmDialogVisible = state.isConfirmDialogVisible,
         isDeletingVocabulary = state.isDeletingVocabulary,
+        onThemeChange = { isDarkTheme ->
+            viewModel.switchTheme(isDarkTheme) {
+                onThemeChange(it)
+            }
+        },
         onCheckDeleteVocabulary = {
             viewModel.checkDeleteVocabulary(it)
         },
@@ -71,8 +80,10 @@ fun SettingsScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsView(
+    settings: Settings?,
     isConfirmDialogVisible: Boolean,
     isDeletingVocabulary: Boolean,
+    onThemeChange: (Boolean) -> Unit = {},
     onResetClick: () -> Unit = {},
     onCheckDeleteVocabulary: (Boolean) -> Unit = {},
     onConfirmReset: () -> Unit = {},
@@ -102,11 +113,17 @@ fun SettingsView(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
+            if (settings == null) {
+                CircularProgressIndicator()
+                return@Box
+            }
             SettingsContent(
                 modifier = Modifier.padding(innerPadding),
+                isDarkTheme = settings.darkTheme,
+                onThemeChange = onThemeChange,
+                startDate = settings.startDate,
                 onReset = onResetClick
             )
-
             ConfirmResetView(
                 isVisible = isConfirmDialogVisible,
                 isDeletingVocabulary = isDeletingVocabulary,
@@ -115,6 +132,5 @@ fun SettingsView(
                 onDismiss = onDismissResetDialog,
             )
         }
-
     }
 }

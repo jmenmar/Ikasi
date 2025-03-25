@@ -42,6 +42,7 @@ class OnboardingViewModel(
                 settings = Settings(
                     onboarding = false,
                     startDate = todayLocalDate(),
+                    darkTheme = true
                 )
             )
         }

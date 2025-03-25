@@ -1,9 +1,11 @@
 package com.jmenmar.ikasi.data.database
 
+import androidx.room.AutoMigration
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import androidx.room.migration.Migration
 import com.jmenmar.ikasi.data.dao.ActivityDao
 import com.jmenmar.ikasi.data.dao.SettingsDao
 import com.jmenmar.ikasi.data.dao.WordDao

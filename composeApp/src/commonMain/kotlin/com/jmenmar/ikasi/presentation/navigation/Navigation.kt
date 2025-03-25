@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jmenmar.ikasi.presentation.onboarding.OnboardingScreen
-import com.jmenmar.ikasi.presentation.screens.flashcards.FlashcardsScreen
 import com.jmenmar.ikasi.presentation.screens.diary.DiaryScreen
+import com.jmenmar.ikasi.presentation.screens.flashcards.FlashcardsScreen
 import com.jmenmar.ikasi.presentation.screens.main.MainScreen
 import com.jmenmar.ikasi.presentation.screens.settings.SettingsScreen
 import com.jmenmar.ikasi.presentation.screens.splash.SplashScreen
@@ -18,6 +18,7 @@ import com.jmenmar.ikasi.presentation.screens.vocabulary.VocabularyScreen
 @Composable
 fun Navigation(
     mainNavController: NavHostController = rememberNavController(),
+    onThemeChange: (Boolean) -> Unit,
 ) {
     NavHost(
         navController = mainNavController,
@@ -25,7 +26,8 @@ fun Navigation(
     ) {
         composable(NavigationRoute.Splash.route) {
             SplashScreen(
-                navController = mainNavController
+                navController = mainNavController,
+                onThemeChange = onThemeChange
             )
         }
 
@@ -36,7 +38,8 @@ fun Navigation(
         }
         composable(NavigationRoute.Main.route) {
             MainScreen(
-                mainNavController = mainNavController
+                mainNavController = mainNavController,
+                onThemeChange = onThemeChange
             )
         }
     }
@@ -47,6 +50,7 @@ fun NavigationGraph(
     mainNavController: NavHostController,
     navController: NavHostController,
     innerPadding: PaddingValues,
+    onThemeChange: (Boolean) -> Unit,
 ) {
     NavHost(
         navController = navController,
@@ -77,6 +81,7 @@ fun NavigationGraph(
             SettingsScreen(
                 mainNavController = mainNavController,
                 navController = navController,
+                onThemeChange = onThemeChange,
             )
         }
     }

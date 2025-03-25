@@ -41,6 +41,20 @@ class SettingsViewModel(
         )
     }
 
+    fun switchTheme(isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
+        if (_state.value.settings != null) {
+            viewModelScope.launch {
+                ikasiRepository.newSettings(
+                    settings = _state.value.settings!!.copy(
+                        darkTheme = isDarkTheme
+                    )
+                ).onSuccess {
+                    onThemeChange(isDarkTheme)
+                }
+            }
+        }
+    }
+
     fun resetProgress() {
         viewModelScope.launch {
             deleteAllUseCase(

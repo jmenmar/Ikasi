@@ -1,15 +1,18 @@
 package com.jmenmar.ikasi.ui
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @Composable
 fun IkasiTheme(
+    isDarkTheme: Boolean?,
     content: @Composable () -> Unit
 ) {
-    val isDark = isSystemInDarkTheme()
-    val colorScheme = DarkColorScheme
+    val colorScheme = when (isDarkTheme) {
+        true -> DarkColorScheme
+        false -> LightColorScheme
+        null -> DarkColorScheme
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,

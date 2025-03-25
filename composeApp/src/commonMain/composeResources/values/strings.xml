@@ -60,5 +60,7 @@
     <string name="are_you_sure_reset_progress">Are you sure you want to reset all the progress?</string>
     <string name="delete_vocabulary">Delete vocabulary</string>
     <string name="confirm">Confirm</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="start_date">Start Date</string>
 
 </resources>

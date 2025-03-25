@@ -39,7 +39,8 @@ fun DiaryHeader(
         ) {
             Icon(
                 imageVector = Icons.Default.Settings,
-                contentDescription = ""
+                contentDescription = "",
+                tint = MaterialTheme.colorScheme.background,
             )
         }
     }

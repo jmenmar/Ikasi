@@ -15,6 +15,7 @@ fun getDatabase(): IkasiDatabase {
     return Room.databaseBuilder<IkasiDatabase>(dbFile)
         .setDriver(BundledSQLiteDriver())
         .setQueryCoroutineContext(Dispatchers.IO)
+        .fallbackToDestructiveMigration(dropAllTables = false)
         .build()
 }
 

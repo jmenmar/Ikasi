@@ -11,11 +11,13 @@ data class SettingsEntity(
     val id: Int = 0,
     val onboarding: Boolean = true,
     val startDate: Int,
+    val darkTheme: Boolean = true,
 ) {
     companion object {
         fun SettingsEntity.toDomain() = Settings(
             onboarding = onboarding,
             startDate = LocalDate.fromEpochDays(this.startDate),
+            darkTheme = darkTheme,
         )
     }
 }

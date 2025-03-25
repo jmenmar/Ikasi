@@ -1,5 +1,7 @@
 package com.jmenmar.ikasi.domain.repository
 
+import com.jmenmar.ikasi.data.model.ActivityEntity
+import com.jmenmar.ikasi.data.model.SettingsEntity
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.Settings
 import com.jmenmar.ikasi.domain.model.Word
@@ -21,4 +23,7 @@ interface IkasiRepository {
     suspend fun getSettings(): Flow<Settings?>
     suspend fun newSettings(settings: Settings): Result<Boolean>
     suspend fun deleteSettings(): Result<Boolean>
+
+    suspend fun newActivity(activity: ActivityEntity): Result<Boolean>
+    suspend fun newSettings(settings: SettingsEntity): Result<Boolean>
 }

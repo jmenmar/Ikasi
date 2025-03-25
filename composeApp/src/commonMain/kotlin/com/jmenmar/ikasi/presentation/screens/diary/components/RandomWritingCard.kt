@@ -77,7 +77,7 @@ fun RandomWritingCard(
                 randomWords.forEachIndexed { index, word ->
                     Text(
                         text = "${index+1}. ${word.title}",
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodySmall,
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1,
                     )
