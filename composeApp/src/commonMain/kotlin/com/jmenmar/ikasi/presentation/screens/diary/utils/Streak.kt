@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.utils
+package com.jmenmar.ikasi.presentation.screens.diary.utils
 
 import com.jmenmar.ikasi.domain.model.Activity
 import kotlinx.datetime.Clock

@@ -32,8 +32,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.presentation.components.BasicCard
-import com.jmenmar.ikasi.presentation.utils.LevelProgress
-import com.jmenmar.ikasi.presentation.utils.formatMinutesToHours
+import com.jmenmar.ikasi.presentation.screens.diary.utils.LevelProgress
+import com.jmenmar.ikasi.presentation.screens.diary.utils.formatMinutesToHours
 import com.jmenmar.ikasi.ui.BlueDarkest
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.experience_x

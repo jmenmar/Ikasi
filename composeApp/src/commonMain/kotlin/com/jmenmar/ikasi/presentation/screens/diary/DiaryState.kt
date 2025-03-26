@@ -3,8 +3,8 @@ package com.jmenmar.ikasi.presentation.screens.diary
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.model.Word
-import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import com.jmenmar.ikasi.presentation.utils.LevelProgress
+import com.jmenmar.ikasi.presentation.screens.diary.utils.ActivityPeriod
+import com.jmenmar.ikasi.presentation.screens.diary.utils.LevelProgress
 
 data class DiaryState(
     val totalDays: Int = 0,

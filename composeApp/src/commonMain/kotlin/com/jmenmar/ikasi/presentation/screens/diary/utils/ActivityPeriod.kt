@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.utils
+package com.jmenmar.ikasi.presentation.screens.diary.utils
 
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.last_week

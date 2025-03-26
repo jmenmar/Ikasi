@@ -27,8 +27,8 @@ import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.presentation.components.AnimatedLinearProgressIndicator
 import com.jmenmar.ikasi.presentation.components.BasicCard
-import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import com.jmenmar.ikasi.presentation.utils.formatMinutesToHours
+import com.jmenmar.ikasi.presentation.screens.diary.utils.ActivityPeriod
+import com.jmenmar.ikasi.presentation.screens.diary.utils.formatMinutesToHours
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

@@ -28,8 +28,8 @@ import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryExperienceVi
 import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryHeader
 import com.jmenmar.ikasi.presentation.screens.diary.components.DiaryMoreActivities
 import com.jmenmar.ikasi.presentation.screens.diary.components.RecentActivityCard
-import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import com.jmenmar.ikasi.presentation.utils.LevelProgress
+import com.jmenmar.ikasi.presentation.screens.diary.utils.ActivityPeriod
+import com.jmenmar.ikasi.presentation.screens.diary.utils.LevelProgress
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
 

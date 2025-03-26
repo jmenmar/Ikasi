@@ -1,4 +1,4 @@
-package com.jmenmar.ikasi.presentation.utils
+package com.jmenmar.ikasi.presentation.screens.diary.utils
 
 data class LevelProgress(
     val level: Int,

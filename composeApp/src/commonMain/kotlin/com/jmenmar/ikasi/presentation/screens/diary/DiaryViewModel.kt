@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
-import com.jmenmar.ikasi.presentation.utils.ActivityPeriod
-import com.jmenmar.ikasi.presentation.utils.calculateLevelAndProgress
-import com.jmenmar.ikasi.presentation.utils.calculateStreak
+import com.jmenmar.ikasi.presentation.screens.diary.utils.ActivityPeriod
+import com.jmenmar.ikasi.presentation.screens.diary.utils.calculateLevelAndProgress
+import com.jmenmar.ikasi.presentation.screens.diary.utils.calculateStreak
 import com.jmenmar.ikasi.presentation.utils.toLocalDate
 import com.jmenmar.ikasi.presentation.utils.todayInstant
 import com.jmenmar.ikasi.presentation.utils.todayLocalDate
