@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
 import com.jmenmar.ikasi.domain.model.Word
+import com.jmenmar.ikasi.domain.usecase.CheckBadgesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class VocabularyViewModel(
-    private val ikasiRepository: IkasiRepository
+    private val ikasiRepository: IkasiRepository,
+    private val checkBadgesUseCase: CheckBadgesUseCase
 ): ViewModel() {
     private val _state = MutableStateFlow(VocabularyState())
     val state: StateFlow<VocabularyState> = _state
@@ -58,6 +60,7 @@ class VocabularyViewModel(
                 )
             ).getOrThrow()
             clearForm()
+            checkBadgesUseCase()
         }
     }
 

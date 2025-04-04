@@ -1,7 +1,9 @@
 package com.jmenmar.ikasi.presentation.navigation
 
 import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.badges
 import ikasi.composeapp.generated.resources.diary
+import ikasi.composeapp.generated.resources.ic_badge
 import ikasi.composeapp.generated.resources.ic_bookmark
 import ikasi.composeapp.generated.resources.ic_check_circle
 import ikasi.composeapp.generated.resources.ic_note_stack
@@ -37,6 +39,11 @@ sealed class BottomNavRoute(
         route = "VOCABULARY",
         title = Res.string.vocabulary,
         icon = Res.drawable.ic_note_stack
+    )
+    data object Badges : BottomNavRoute(
+        route = "BADGES",
+        title = Res.string.badges,
+        icon = Res.drawable.ic_badge
     )
 }
 

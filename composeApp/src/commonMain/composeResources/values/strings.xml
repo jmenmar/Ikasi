@@ -5,6 +5,7 @@
     <string name="diary">Diary</string>
     <string name="today">Today</string>
     <string name="vocabulary">Vocabulary</string>
+    <string name="badges">Badges</string>
     // Activities
     <string name="speaking">Speaking</string>
     <string name="listening">Listening</string>
@@ -19,6 +20,8 @@
     <string name="fundamentals">Fundamentals</string>
     // Onboarding
     <string name="level_x">Level %1$d</string>
+    // Main
+    <string name="badge_unlocked">Badge Unlocked</string>
     // Today
     <string name="activities">Activities</string>
     <string name="update">Update</string>
@@ -51,9 +54,6 @@
     <string name="incorrect">Incorrect</string>
     <string name="no_flashcards">No Flashcards</string>
     <string name="result_x">Result %1$s%</string>
-    // Goals
-    <string name="goal_365_days">365 days</string>
-    <string name="goal_100_days">100 days</string>
     // Settings
     <string name="settings">Settings</string>
     <string name="reset_progress">Reset progress</string>
@@ -62,5 +62,74 @@
     <string name="confirm">Confirm</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="start_date">Start Date</string>
+    // Badges
+    <string name="badge_listening_25_hrs_title">Listening 25 hrs</string>
+    <string name="badge_listening_25_hrs_description">Reach 25 hrs of listening</string>
+    <string name="badge_listening_50_hrs_title">Listening 50 hrs</string>
+    <string name="badge_listening_50_hrs_description">Reach 50 hrs of listening</string>
+    <string name="badge_listening_100_hrs_title">Listening 100 hrs</string>
+    <string name="badge_listening_100_hrs_description">Reach 100 hrs of listening</string>
 
+    <string name="badge_reading_25_hrs_title">Reading 25 hrs</string>
+    <string name="badge_reading_25_hrs_description">Reach 25 hrs of reading</string>
+    <string name="badge_reading_50_hrs_title">Reading 50 hrs</string>
+    <string name="badge_reading_50_hrs_description">Reach 50 hrs of reading</string>
+    <string name="badge_reading_100_hrs_title">Reading 100 hrs</string>
+    <string name="badge_reading_100_hrs_description">Reach 100 hrs of reading</string>
+
+    <string name="badge_writing_25_hrs_title">Writing 25 hrs</string>
+    <string name="badge_writing_25_hrs_description">Reach 25 hrs of writing</string>
+    <string name="badge_writing_50_hrs_title">Writing 50 hrs</string>
+    <string name="badge_writing_50_hrs_description">Reach 50 hrs of writing</string>
+    <string name="badge_writing_100_hrs_title">Writing 100 hrs</string>
+    <string name="badge_writing_100_hrs_description">Reach 100 hrs of writing</string>
+
+    <string name="badge_speaking_25_hrs_title">Speaking 25 hrs</string>
+    <string name="badge_speaking_25_hrs_description">Reach 25 hrs of speaking</string>
+    <string name="badge_speaking_50_hrs_title">Speaking 50 hrs</string>
+    <string name="badge_speaking_50_hrs_description">Reach 50 hrs of speaking</string>
+    <string name="badge_speaking_100_hrs_title">Speaking 100 hrs</string>
+    <string name="badge_speaking_100_hrs_description">Reach 100 hrs of speaking</string>
+
+    <string name="badge_vocabulary_25_entries_title">Vocabulary 25 entries</string>
+    <string name="badge_vocabulary_25_entries_description">Add 25 entries to the vocabulary</string>
+    <string name="badge_vocabulary_50_entries_title">Vocabulary 50 entries</string>
+    <string name="badge_vocabulary_50_entries_description">Add 50 entries to the vocabulary</string>
+    <string name="badge_vocabulary_100_entries_title">Vocabulary 100 entries</string>
+    <string name="badge_vocabulary_100_entries_description">Add 100 entries to the vocabulary</string>
+
+    <string name="badge_streak_7_days_title">7 days streak</string>
+    <string name="badge_streak_7_days_description">7 days streak</string>
+    <string name="badge_streak_15_days_title">15 days streak</string>
+    <string name="badge_streak_15_days_description">15 days streak</string>
+    <string name="badge_streak_30_days_title">30 days streak</string>
+    <string name="badge_streak_30_days_description">30 days streak</string>
+
+    <string name="badge_reach_level_5_title">Reach level 5</string>
+    <string name="badge_reach_level_5_description">Reach level 5</string>
+    <string name="badge_reach_level_15_title">Reach level 15</string>
+    <string name="badge_reach_level_15_description">Reach level 15</string>
+    <string name="badge_reach_level_25_title">Reach level 25</string>
+    <string name="badge_reach_level_25_description">Reach level 25</string>
+
+    <string name="badge_flashcards_70_title">70% in Flashcards</string>
+    <string name="badge_flashcards_70_description">At least 50 entries added</string>
+    <string name="badge_flashcards_85_title">85% in Flashcards</string>
+    <string name="badge_flashcards_85_description">At least 50 entries added</string>
+    <string name="badge_flashcards_100_title">100% in Flashcards</string>
+    <string name="badge_flashcards_100_description">At least 50 entries added</string>
+
+    <string name="badge_2_hrs_in_one_day_title">2 hrs in a day</string>
+    <string name="badge_2_hrs_in_one_day_description">2 hrs in total in a day</string>
+    <string name="badge_3_activities_in_one_day_title">3 activities in a day</string>
+    <string name="badge_3_activities_in_one_day_description">3 activities in a day</string>
+    <string name="badge_5_activities_in_one_day_title">5 activities in a day</string>
+    <string name="badge_5_activities_in_one_day_description">5 activities in a day</string>
+
+    <string name="badge_welcome_title">Welcome</string>
+    <string name="badge_welcome_description">Start using Ikasi</string>
+    <string name="badge_first_activity_title">First Activity</string>
+    <string name="badge_first_activity_description">Add your first activity</string>
+    <string name="badge_first_vocabulary_title">First vocabulary</string>
+    <string name="badge_first_vocabulary_description">Add your first entry in the vocabulary</string>
 </resources>

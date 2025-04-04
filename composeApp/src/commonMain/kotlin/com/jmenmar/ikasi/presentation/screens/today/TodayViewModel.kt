@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
+import com.jmenmar.ikasi.domain.usecase.CheckBadgesUseCase
 import com.jmenmar.ikasi.presentation.utils.beforeDate
 import com.jmenmar.ikasi.presentation.utils.todayLocalDate
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.datetime.DateTimeUnit
 
 class TodayViewModel(
-    private val ikasiRepository: IkasiRepository
+    private val ikasiRepository: IkasiRepository,
+    private val checkBadgesUseCase: CheckBadgesUseCase
 ): ViewModel() {
     private val _state = MutableStateFlow(TodayState())
     val state: StateFlow<TodayState> = _state
@@ -49,6 +51,7 @@ class TodayViewModel(
     private fun addActivity(activity: Activity) {
         viewModelScope.launch {
             ikasiRepository.newActivity(activity)
+            checkBadgesUseCase()
         }
     }
 

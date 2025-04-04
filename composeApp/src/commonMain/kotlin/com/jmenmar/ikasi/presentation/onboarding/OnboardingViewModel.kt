@@ -2,19 +2,18 @@ package com.jmenmar.ikasi.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jmenmar.ikasi.domain.model.Settings
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
-import com.jmenmar.ikasi.presentation.utils.todayLocalDate
+import com.jmenmar.ikasi.domain.usecase.StartingUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class OnboardingViewModel(
-    private val ikasiRepository: IkasiRepository
+    private val ikasiRepository: IkasiRepository,
+    private val startingUseCase: StartingUseCase
 ): ViewModel() {
     private val _state = MutableStateFlow(OnboardingState())
     val state: StateFlow<OnboardingState> = _state
-
 
     init {
         getOnboardingState()
@@ -38,13 +37,7 @@ class OnboardingViewModel(
 
     fun finishOnboarding() {
         viewModelScope.launch {
-            ikasiRepository.newSettings(
-                settings = Settings(
-                    onboarding = false,
-                    startDate = todayLocalDate(),
-                    darkTheme = true
-                )
-            )
+            startingUseCase()
         }
     }
 }

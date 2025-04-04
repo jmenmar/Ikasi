@@ -8,10 +8,10 @@ class DeleteAllUseCase(
     suspend operator fun invoke(deleteVocabulary: Boolean): Result<Boolean> {
         if (deleteVocabulary) {
             ikasiRepository.deleteAllWords().getOrThrow()
-
         }
         ikasiRepository.deleteAllActivities().getOrThrow()
         ikasiRepository.deleteSettings().getOrThrow()
+        ikasiRepository.deleteBadges(deleteVocabulary = deleteVocabulary).getOrThrow()
         return Result.success(true)
     }
 }

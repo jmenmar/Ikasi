@@ -3,12 +3,14 @@ package com.jmenmar.ikasi.presentation.screens.flashcards
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
+import com.jmenmar.ikasi.domain.usecase.CheckBadgesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class FlashcardsViewModel(
-    private val ikasiRepository: IkasiRepository
+    private val ikasiRepository: IkasiRepository,
+    private val checkBadgesUseCase: CheckBadgesUseCase
 ): ViewModel() {
     private val _state = MutableStateFlow(FlashcardsState())
     val state: StateFlow<FlashcardsState> = _state
@@ -53,5 +55,15 @@ class FlashcardsViewModel(
             isWordShown = false,
             incorrectAnswers = _state.value.incorrectAnswers
         )
+
+        if (finished) {
+            viewModelScope.launch {
+                val correct = _state.value.correctAnswers
+                val incorrect = _state.value.incorrectAnswers
+                checkBadgesUseCase(
+                    flashcardsResult = (correct.toFloat() / (correct + incorrect) * 100).toInt()
+                )
+            }
+        }
     }
 }

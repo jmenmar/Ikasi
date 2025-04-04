@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jmenmar.ikasi.presentation.onboarding.OnboardingScreen
+import com.jmenmar.ikasi.presentation.screens.badges.BadgesScreen
 import com.jmenmar.ikasi.presentation.screens.diary.DiaryScreen
 import com.jmenmar.ikasi.presentation.screens.flashcards.FlashcardsScreen
 import com.jmenmar.ikasi.presentation.screens.main.MainScreen
@@ -82,6 +83,11 @@ fun NavigationGraph(
                 mainNavController = mainNavController,
                 navController = navController,
                 onThemeChange = onThemeChange,
+            )
+        }
+        composable(route = BottomNavRoute.Badges.route) {
+            BadgesScreen(
+                innerPadding = innerPadding,
             )
         }
     }

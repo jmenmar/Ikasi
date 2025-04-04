@@ -27,6 +27,7 @@ fun BottomNavBar(navController: NavHostController) {
         BottomNavRoute.Today,
         BottomNavRoute.Diary,
         BottomNavRoute.Vocabulary,
+        BottomNavRoute.Badges
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination

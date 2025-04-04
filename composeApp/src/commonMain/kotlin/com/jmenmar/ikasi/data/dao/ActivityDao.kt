@@ -18,6 +18,9 @@ interface ActivityDao {
     @Query("SELECT * FROM activity")
     fun getAllActivities(): Flow<List<ActivityEntity>>
 
+    @Query("SELECT * FROM activity")
+    suspend fun getActivities(): List<ActivityEntity>
+
     @Query("SELECT * FROM activity WHERE date >= :dateFrom AND date <= :dateTo")
     fun getActivities(dateFrom: Int, dateTo: Int): Flow<List<ActivityEntity>>
 
