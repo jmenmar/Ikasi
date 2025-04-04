@@ -1,11 +1,9 @@
 package com.jmenmar.ikasi.data.database
 
-import androidx.room.AutoMigration
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
-import androidx.room.migration.Migration
 import com.jmenmar.ikasi.data.dao.ActivityDao
 import com.jmenmar.ikasi.data.dao.BadgeDao
 import com.jmenmar.ikasi.data.dao.SettingsDao
@@ -26,7 +24,7 @@ expect object IkasiCTor : RoomDatabaseConstructor<IkasiDatabase>
         SettingsEntity::class,
         BadgeEntity::class,
     ],
-    version = 1,
+    version = 2,
 )
 @ConstructedBy(IkasiCTor::class)
 abstract class IkasiDatabase : RoomDatabase() {

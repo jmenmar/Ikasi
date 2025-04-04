@@ -31,7 +31,8 @@ fun BadgeIcon(badge: Badge) {
                 .padding(8.dp),
             painter = painterResource(badge.type.icon),
             contentDescription = "",
-            tint = MaterialTheme.colorScheme.onPrimary,
+            tint = if (badge.completed) MaterialTheme.colorScheme.onPrimary
+            else MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.2f)
         )
     }
 }
