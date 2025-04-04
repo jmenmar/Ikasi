@@ -19,6 +19,12 @@
     <string name="written_expression">Written Expression</string>
     <string name="fundamentals">Fundamentals</string>
     // Onboarding
+    <string name="onboarding_welcome_title">Welcome to Ikasi</string>
+    <string name="onboarding_welcome_description">The app that helps you master a new language with an immersive and entertaining routine that you design yourself.</string>
+    <string name="onboarding_improve_title">Improve your skills</string>
+    <string name="onboarding_improve_description">Find out and work on the skills that are most difficult for you on a day-to-day basis and learn how to manage your time more efficiently.</string>
+    <string name="onboarding_badges_title">Badges</string>
+    <string name="onboarding_badges_description">Collect all the badges while you are learning and progressing.</string>
     <string name="level_x">Level %1$d</string>
     // Main
     <string name="badge_unlocked">Badge Unlocked</string>

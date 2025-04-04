@@ -11,8 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,8 +29,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun OnboardingPager(
-    isLevelOne: Boolean,
-    onUpToLevelOne: () -> Unit = {},
+    isOnboardingSeen: Boolean,
+    onboardingSeen: () -> Unit = {},
     onFinish: () -> Unit,
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
@@ -37,7 +39,8 @@ fun OnboardingPager(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 24.dp)
-            .padding(top = 32.dp),
+            .padding(top = 32.dp)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
@@ -60,10 +63,9 @@ fun OnboardingPager(
                         1 ->
                             SkillsPage()
                         2 -> {
-                            LevelsPage(
+                            BadgesPage(
                                 hasSeen = pagerState.currentPage == 2,
-                                isLevelOne = isLevelOne,
-                                onUpToLevelOne = onUpToLevelOne,
+                                onboardingSeen = onboardingSeen
                             )
                         }
                     }
@@ -91,7 +93,7 @@ fun OnboardingPager(
         }
         Box(modifier = Modifier.weight(0.15f)) {
             Button(
-                enabled = isLevelOne,
+                enabled = isOnboardingSeen,
                 shape = RoundedCornerShape(12.dp),
                 contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
                 onClick = onFinish,

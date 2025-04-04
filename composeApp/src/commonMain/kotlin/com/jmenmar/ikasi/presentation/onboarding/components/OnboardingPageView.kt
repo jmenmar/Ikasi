@@ -42,7 +42,7 @@ fun OnboardingPageView(
             )
             Text(
                 text = description,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                 textAlign = TextAlign.Center,
             )

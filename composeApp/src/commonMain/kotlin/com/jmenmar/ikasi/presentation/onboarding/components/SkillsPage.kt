@@ -13,13 +13,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.domain.model.ActivityType
 import com.jmenmar.ikasi.presentation.components.RadarChart
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.onboarding_improve_description
+import ikasi.composeapp.generated.resources.onboarding_improve_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SkillsPage() {
     OnboardingPageView(
-        title = "Improve your skills",
-        description = "Find out and work on the skills that are most difficult for you on a day-to-day basis.\nLearn how to manage your time more efficiently to improve all your skills.",
+        title = stringResource(Res.string.onboarding_improve_title),
+        description = stringResource(Res.string.onboarding_improve_description),
     ) {
         val labels = ActivityType.entries.map { stringResource(it.skill) }
         val pathEffects = with(LocalDensity.current) {

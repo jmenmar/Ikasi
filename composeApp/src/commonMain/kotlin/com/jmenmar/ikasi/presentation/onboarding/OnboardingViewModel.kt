@@ -29,9 +29,9 @@ class OnboardingViewModel(
         }
     }
 
-    fun upToLevelOne() {
+    fun onboardingSeen() {
         _state.value = _state.value.copy(
-            isLevelOne = true
+            isOnboardingSeen = true
         )
     }
 

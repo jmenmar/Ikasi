@@ -1,5 +1,6 @@
 package com.jmenmar.ikasi.presentation.components
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,6 +30,8 @@ fun BasicCard(
     onClick: () -> Unit = {},
     content: @Composable () -> Unit
 ) {
+    val interactionSource = remember { if (onClick != {}) MutableInteractionSource() else null }
+
     Card(
         modifier = cardModifier,
         colors = CardDefaults.cardColors().copy(
@@ -37,7 +41,8 @@ fun BasicCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         ),
-        onClick = onClick
+        onClick = onClick,
+        interactionSource = null
     ) {
         Column(
             modifier = modifier.padding(horizontal = 16.dp, vertical = 20.dp),

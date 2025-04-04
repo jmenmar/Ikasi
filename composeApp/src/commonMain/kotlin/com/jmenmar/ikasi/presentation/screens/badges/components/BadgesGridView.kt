@@ -1,7 +1,6 @@
 package com.jmenmar.ikasi.presentation.screens.badges.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells

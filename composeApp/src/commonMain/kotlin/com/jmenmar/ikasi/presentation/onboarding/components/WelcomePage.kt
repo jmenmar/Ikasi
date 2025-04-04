@@ -19,19 +19,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.domain.model.ActivityType
+import ikasi.composeapp.generated.resources.Res
+import ikasi.composeapp.generated.resources.onboarding_welcome_description
+import ikasi.composeapp.generated.resources.onboarding_welcome_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun WelcomePage() {
     OnboardingPageView(
-        title = "Welcome to Ikasi",
-        description = "The app that helps you master a new language with an immersive and entertaining routine that you design yourself.\nNo more textbooks and fill in the gaps exercises!",
+        title = stringResource(Res.string.onboarding_welcome_title),
+        description = stringResource(Res.string.onboarding_welcome_description),
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            ActivityType.entries.sortedBy { it.priority }.forEachIndexed { index, type ->
+            ActivityType.entries.sortedBy { it.priority }.forEach { type ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -64,6 +67,5 @@ fun WelcomePage() {
                 }
             }
         }
-
     }
 }

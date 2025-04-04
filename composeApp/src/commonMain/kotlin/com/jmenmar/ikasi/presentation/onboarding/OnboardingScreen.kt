@@ -36,10 +36,10 @@ fun OnboardingScreen(
     }
 
     OnboardingView(
-        isLevelOne = state.isLevelOne,
-        onUpToLevelOne = { viewModel.upToLevelOne() },
+        isOnboardingSeen = state.isOnboardingSeen,
+        onboardingSeen = { viewModel.onboardingSeen() },
         onFinish = {
-            if (state.isLevelOne) {
+            if (state.isOnboardingSeen) {
                 viewModel.finishOnboarding()
             }
         }
@@ -48,8 +48,8 @@ fun OnboardingScreen(
 
 @Composable
 fun OnboardingView(
-    isLevelOne: Boolean,
-    onUpToLevelOne: () -> Unit = {},
+    isOnboardingSeen: Boolean,
+    onboardingSeen: () -> Unit = {},
     onFinish: () -> Unit = {}
 ) {
     Scaffold { innerPadding ->
@@ -60,8 +60,8 @@ fun OnboardingView(
                 .background(MaterialTheme.colorScheme.background)
         ) {
             OnboardingPager(
-                isLevelOne = isLevelOne,
-                onUpToLevelOne = onUpToLevelOne,
+                isOnboardingSeen = isOnboardingSeen,
+                onboardingSeen = onboardingSeen,
                 onFinish = onFinish
             )
         }
