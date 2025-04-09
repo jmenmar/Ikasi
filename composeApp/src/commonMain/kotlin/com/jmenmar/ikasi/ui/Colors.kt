@@ -19,6 +19,7 @@ val Green = Color(0xFF64C29C)
 val Yellow = Color(0xFFF3B455)
 val Orange = Color(0xFFEE804A)
 val Pink = Color(0xFFDF5284)
+val Red = Color(0xFFD57076)
 
 internal val LightColorScheme = lightColorScheme(
     primary = BlueMedium,

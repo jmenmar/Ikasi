@@ -6,7 +6,7 @@ import kotlinx.datetime.LocalDate
 data class Settings(
     val onboarding: Boolean,
     val startDate: LocalDate,
-    val darkTheme: Boolean,
+    val darkTheme: Boolean = true,
 ) {
     companion object {
         fun Settings.toEntity() = SettingsEntity(

@@ -21,7 +21,7 @@ class OnboardingViewModel(
 
     private fun getOnboardingState() {
         viewModelScope.launch {
-            ikasiRepository.getSettings().collect { settings ->
+            ikasiRepository.getSettingsAsFlow().collect { settings ->
                 _state.value = _state.value.copy(
                     onboarding = settings?.onboarding ?: true
                 )

@@ -22,7 +22,7 @@ class VocabularyViewModel(
 
     private fun getAllCards() {
         viewModelScope.launch {
-            ikasiRepository.getAllWords().collect {
+            ikasiRepository.getWordsAsFlow().collect {
                 updateState(allVocabulary = it)
             }
         }
@@ -67,6 +67,7 @@ class VocabularyViewModel(
     fun onDeleteWord(word: Word) {
         viewModelScope.launch {
             ikasiRepository.deleteWord(word).getOrThrow()
+            _state.value = _state.value.copy(word = "")
             updateState(state.value.allVocabulary)
         }
     }
@@ -78,6 +79,7 @@ class VocabularyViewModel(
             meaning = "",
             notes = null
         )
+        searchCards()
     }
 
     private fun searchCards() {
@@ -88,7 +90,7 @@ class VocabularyViewModel(
                     .filter { it.title.contains(search, ignoreCase = true) },
             )
         } else {
-            _state.value = _state.value.copy(filteredVocabulary = emptyList())
+            _state.value = _state.value.copy(filteredVocabulary = state.value.allVocabulary)
         }
     }
 }

@@ -17,6 +17,13 @@ interface SettingsDao {
     @Query("SELECT * FROM settings WHERE id = 0")
     fun getSettings(): Flow<SettingsEntity?>
 
+    @Query("SELECT * FROM settings WHERE id = 0")
+    suspend fun getSettings2(): SettingsEntity?
+
+    // UPDATE
+    @Query("UPDATE settings SET onboarding = :onboarding, startDate = :date WHERE id = 0")
+    suspend fun updateSettings(onboarding: Boolean, date: Int)
+
     // DELETE
     @Query("DELETE FROM settings WHERE id = 0")
     suspend fun deleteSettings()

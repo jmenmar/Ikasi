@@ -14,25 +14,16 @@ class SplashViewModel(
     val state: StateFlow<SplashState> = _state
 
     init {
-        getOnboarding()
-        getTheme()
+        getData()
     }
 
-    private fun getTheme() {
+    private fun getData() {
         viewModelScope.launch {
-            ikasiRepository.getSettings().collect {
+            ikasiRepository.getSettingsAsFlow().collect {
                 _state.value = _state.value.copy(
+                    onboarding = it?.onboarding ?: true,
                     darkTheme = it?.darkTheme ?: true,
                     isLoading = false
-                )
-            }
-        }
-    }
-    private fun getOnboarding() {
-        viewModelScope.launch {
-            ikasiRepository.getSettings().collect {
-                _state.value = _state.value.copy(
-                    onboarding = it?.onboarding ?: true
                 )
             }
         }

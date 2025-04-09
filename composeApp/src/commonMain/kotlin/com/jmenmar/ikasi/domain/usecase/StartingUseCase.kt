@@ -9,13 +9,19 @@ class StartingUseCase(
     private val ikasiRepository: IkasiRepository
 ) {
     suspend operator fun invoke(): Result<Boolean> {
-        ikasiRepository.newSettings(
-            settings = Settings(
+        if (ikasiRepository.getSettings() == null) {
+            ikasiRepository.newSettings(
+                settings = Settings(
+                    onboarding = false,
+                    startDate = todayLocalDate()
+                )
+            ).getOrThrow()
+        } else {
+            ikasiRepository.updateSettings(
                 onboarding = false,
-                startDate = todayLocalDate(),
-                darkTheme = true
-            )
-        ).getOrThrow()
+                date = todayLocalDate().toEpochDays()
+            ).getOrThrow()
+        }
         ikasiRepository.newBadges(badgesData).getOrThrow()
         return Result.success(true)
     }

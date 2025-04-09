@@ -3,7 +3,7 @@ package com.jmenmar.ikasi.presentation.screens.diary.utils
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.last_week
 import ikasi.composeapp.generated.resources.one_month
-import ikasi.composeapp.generated.resources.three_months
+import ikasi.composeapp.generated.resources.total
 import kotlinx.datetime.DateTimeUnit
 import org.jetbrains.compose.resources.StringResource
 
@@ -22,9 +22,9 @@ enum class ActivityPeriod(
         value = 1,
         unit = DateTimeUnit.MONTH
     ),
-    THREE_MONTHS(
-        title = Res.string.three_months,
-        value = 3,
-        unit = DateTimeUnit.MONTH
+    TOTAL(
+        title = Res.string.total,
+        value = 99,
+        unit = DateTimeUnit.YEAR
     ),
 }

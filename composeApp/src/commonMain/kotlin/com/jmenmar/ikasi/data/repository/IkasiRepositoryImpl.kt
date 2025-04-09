@@ -1,10 +1,8 @@
 package com.jmenmar.ikasi.data.repository
 
 import com.jmenmar.ikasi.data.database.IkasiDatabase
-import com.jmenmar.ikasi.data.model.ActivityEntity
 import com.jmenmar.ikasi.data.model.ActivityEntity.Companion.toDomain
 import com.jmenmar.ikasi.data.model.BadgeEntity.Companion.toDomain
-import com.jmenmar.ikasi.data.model.SettingsEntity
 import com.jmenmar.ikasi.data.model.SettingsEntity.Companion.toDomain
 import com.jmenmar.ikasi.data.model.WordEntity.Companion.toDomain
 import com.jmenmar.ikasi.domain.model.Activity
@@ -38,7 +36,7 @@ class IkasiRepositoryImpl(
                 }
             }
 
-    override suspend fun getAllActivities() =
+    override suspend fun getActivitiesAsFlow() =
         ikasiDatabase.activityDao().getAllActivities().map { list ->
             list.map { activity ->
                 activity.toDomain()
@@ -80,12 +78,12 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun getAllWords() =
+    override suspend fun getWordsAsFlow() =
         ikasiDatabase.wordDao().getAllWords().map {
             it.map { word ->
                 word.toDomain()
             }.sortedBy { word ->
-                word.title
+                word.title.lowercase()
             }
         }
 
@@ -123,8 +121,11 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun getSettings() =
+    override suspend fun getSettingsAsFlow() =
         ikasiDatabase.settingsDao().getSettings().map { it?.toDomain() }
+
+    override suspend fun getSettings() =
+        ikasiDatabase.settingsDao().getSettings2()?.toDomain()
 
     override suspend fun newSettings(settings: Settings): Result<Boolean> {
         return try {
@@ -135,9 +136,9 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun deleteSettings(): Result<Boolean> {
+    override suspend fun updateSettings(onboarding: Boolean, date: Int): Result<Boolean> {
         return try {
-            ikasiDatabase.settingsDao().deleteSettings()
+            ikasiDatabase.settingsDao().updateSettings(onboarding = onboarding, date = date)
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)
@@ -166,7 +167,7 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun getAllBadges() =
+    override suspend fun getBadgesAsFlow() =
         ikasiDatabase.badgeDao().getAllBadges().map { list ->
             list.map { badge ->
                 badge.toDomain()
@@ -206,24 +207,6 @@ class IkasiRepositoryImpl(
             } else {
                 ikasiDatabase.badgeDao().deleteAllBadgesExceptVocabulary()
             }
-            Result.success(true)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    override suspend fun newActivity(activity: ActivityEntity): Result<Boolean> {
-        return try {
-            ikasiDatabase.activityDao().insertActivity(activity = activity)
-            Result.success(true)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    override suspend fun newSettings(settings: SettingsEntity): Result<Boolean> {
-        return try {
-            ikasiDatabase.settingsDao().insertWord(settings = settings)
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)

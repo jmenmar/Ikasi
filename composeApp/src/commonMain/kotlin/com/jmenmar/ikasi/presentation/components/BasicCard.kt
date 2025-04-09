@@ -1,5 +1,7 @@
 package com.jmenmar.ikasi.presentation.components
 
+import androidx.compose.foundation.interaction.Interaction
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,11 +12,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.flow.emptyFlow
 
 @Composable
 fun BasicCard(
@@ -25,9 +29,21 @@ fun BasicCard(
     containerColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
     title: String? = null,
-    onClick: () -> Unit = {},
+    onClick: (() -> Unit)? = null,
     content: @Composable () -> Unit
 ) {
+    val interactionSource = remember {
+        if (onClick != null) {
+            MutableInteractionSource()
+        } else {
+            object : MutableInteractionSource {
+                override val interactions = emptyFlow<Interaction>()
+                override suspend fun emit(interaction: Interaction) {}
+                override fun tryEmit(interaction: Interaction) = true
+            }
+        }
+    }
+
     Card(
         modifier = cardModifier,
         colors = CardDefaults.cardColors().copy(
@@ -37,8 +53,8 @@ fun BasicCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         ),
-        onClick = onClick,
-        interactionSource = null
+        onClick = onClick ?: {},
+        interactionSource = interactionSource,
     ) {
         Column(
             modifier = modifier.padding(horizontal = 16.dp, vertical = 20.dp),

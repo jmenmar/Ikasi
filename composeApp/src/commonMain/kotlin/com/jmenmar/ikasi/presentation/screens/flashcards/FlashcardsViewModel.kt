@@ -21,7 +21,7 @@ class FlashcardsViewModel(
 
     private fun getActivities() {
         viewModelScope.launch {
-            ikasiRepository.getAllWords().collect {
+            ikasiRepository.getWordsAsFlow().collect {
                 _state.value = _state.value.copy(vocabulary = it.shuffled())
             }
         }

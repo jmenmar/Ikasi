@@ -35,7 +35,7 @@ class DiaryViewModel(
 
     private fun getSettings() {
         viewModelScope.launch {
-            ikasiRepository.getSettings().collect { settings ->
+            ikasiRepository.getSettingsAsFlow().collect { settings ->
                 if (settings != null) {
                     _state.value = _state.value.copy(
                         totalDays = settings.startDate.daysUntil(todayLocalDate()) + 1
@@ -47,7 +47,7 @@ class DiaryViewModel(
 
     private fun getActivities() {
         viewModelScope.launch {
-            ikasiRepository.getAllActivities().collect { allActivities ->
+            ikasiRepository.getActivitiesAsFlow().collect { allActivities ->
                 updateActivitiesState(allActivities)
             }
         }

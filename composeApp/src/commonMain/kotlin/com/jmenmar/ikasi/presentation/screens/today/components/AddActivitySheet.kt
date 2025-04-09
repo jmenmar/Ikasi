@@ -36,6 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jmenmar.ikasi.domain.model.Activity
 import com.jmenmar.ikasi.domain.model.ActivityType
@@ -194,7 +195,10 @@ fun ActivityTimeChip(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = activityPeriod.label,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         },
         selected = selected,

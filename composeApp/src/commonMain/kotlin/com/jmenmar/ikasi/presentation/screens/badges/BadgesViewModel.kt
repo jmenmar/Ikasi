@@ -25,7 +25,7 @@ class BadgesViewModel(
 
     private fun getBadges() {
         viewModelScope.launch {
-            ikasiRepository.getAllBadges().collect { badges ->
+            ikasiRepository.getBadgesAsFlow().collect { badges ->
                 _state.value = _state.value.copy(
                     badges = badges
                 )

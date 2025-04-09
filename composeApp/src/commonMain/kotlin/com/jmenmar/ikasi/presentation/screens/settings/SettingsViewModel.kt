@@ -21,7 +21,7 @@ class SettingsViewModel(
 
     private fun getSettings() {
         viewModelScope.launch {
-            ikasiRepository.getSettings().collect { settings ->
+            ikasiRepository.getSettingsAsFlow().collect { settings ->
                 _state.value = _state.value.copy(
                     settings = settings
                 )

@@ -40,6 +40,7 @@
     <string name="last_week">Last Week</string>
     <string name="one_month">1 Month</string>
     <string name="three_months">3 Months</string>
+    <string name="total">Total</string>
     <string name="writing_vocabulary">with 3 random words from vocabulary to use.</string>
     <string name="flashcards">Flashcards</string>
     <string name="flashcards_description">Review vocabulary and learn while you play.</string>
@@ -54,6 +55,7 @@
     <string name="notes_optional">Notes (optional)</string>
     <string name="add_vocabulary">Add Vocabulary</string>
     <string name="entries">%1$d entries</string>
+    <string name="delete">Delete</string>
     // Flashcards
     <string name="show_meaning">Show meaning</string>
     <string name="correct">Correct</string>

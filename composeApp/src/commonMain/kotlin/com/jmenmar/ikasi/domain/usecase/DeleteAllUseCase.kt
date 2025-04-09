@@ -10,7 +10,7 @@ class DeleteAllUseCase(
             ikasiRepository.deleteAllWords().getOrThrow()
         }
         ikasiRepository.deleteAllActivities().getOrThrow()
-        ikasiRepository.deleteSettings().getOrThrow()
+        ikasiRepository.updateSettings(onboarding = true, date = 0).getOrThrow()
         ikasiRepository.deleteBadges(deleteVocabulary = deleteVocabulary).getOrThrow()
         return Result.success(true)
     }
