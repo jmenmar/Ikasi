@@ -17,6 +17,7 @@ class SettingsViewModel(
 
     init {
         getSettings()
+        getTotalTime()
     }
 
     private fun getSettings() {
@@ -26,6 +27,15 @@ class SettingsViewModel(
                     settings = settings
                 )
             }
+        }
+    }
+
+    private fun getTotalTime() {
+        viewModelScope.launch {
+            val time = ikasiRepository.getActivities().sumOf { it.time }
+            _state.value = _state.value.copy(
+                totalTime = time
+            )
         }
     }
 

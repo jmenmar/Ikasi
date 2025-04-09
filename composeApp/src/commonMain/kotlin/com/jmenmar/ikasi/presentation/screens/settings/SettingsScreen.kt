@@ -51,6 +51,7 @@ fun SettingsScreen(
 
     SettingsView(
         settings = state.settings,
+        totalTime = state.totalTime,
         isConfirmDialogVisible = state.isConfirmDialogVisible,
         isDeletingVocabulary = state.isDeletingVocabulary,
         onThemeChange = { isDarkTheme ->
@@ -81,6 +82,7 @@ fun SettingsScreen(
 @Composable
 fun SettingsView(
     settings: Settings?,
+    totalTime: Int,
     isConfirmDialogVisible: Boolean,
     isDeletingVocabulary: Boolean,
     onThemeChange: (Boolean) -> Unit = {},
@@ -122,6 +124,7 @@ fun SettingsView(
                 isDarkTheme = settings.darkTheme,
                 onThemeChange = onThemeChange,
                 startDate = settings.startDate,
+                totalTime = totalTime,
                 onReset = onResetClick
             )
             ConfirmResetView(

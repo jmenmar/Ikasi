@@ -20,12 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.jmenmar.ikasi.presentation.screens.diary.utils.formatMinutesToHours
 import com.jmenmar.ikasi.presentation.utils.toStringFormat
 import com.jmenmar.ikasi.ui.Pink
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.dark_mode
 import ikasi.composeapp.generated.resources.reset_progress
 import ikasi.composeapp.generated.resources.start_date
+import ikasi.composeapp.generated.resources.total_time
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 
@@ -34,6 +36,7 @@ fun SettingsContent(
     modifier: Modifier = Modifier,
     isDarkTheme: Boolean,
     startDate: LocalDate,
+    totalTime: Int,
     onThemeChange: (Boolean) -> Unit = {},
     onReset: () -> Unit = {}
 ) {
@@ -65,6 +68,19 @@ fun SettingsContent(
             Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = startDate.toStringFormat(),
+            )
+        }
+        HorizontalDivider()
+        Row(
+            modifier = Modifier.padding(vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(Res.string.total_time),
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = formatMinutesToHours(totalTime),
             )
         }
         HorizontalDivider()

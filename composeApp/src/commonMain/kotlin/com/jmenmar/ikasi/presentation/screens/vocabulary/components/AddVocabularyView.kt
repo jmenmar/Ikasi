@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +26,7 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.jmenmar.ikasi.presentation.components.BasicTextField
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.add
 import ikasi.composeapp.generated.resources.meaning
@@ -56,15 +56,13 @@ fun AddVocabularyView(
                 text = word,
                 style = MaterialTheme.typography.headlineSmall
             )
-            OutlinedTextField(
+            BasicTextField(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 42.dp),
                 value = meaning,
-                placeholder = {
-                    Text(text = stringResource(Res.string.meaning))
-                },
-                maxLines = 1,
+                placeholder = stringResource(Res.string.meaning),
+                onValueChange = { onMeaningChange(it) },
                 keyboardOptions = KeyboardOptions(
                     autoCorrectEnabled = false,
                     keyboardType = KeyboardType.Text,
@@ -73,25 +71,20 @@ fun AddVocabularyView(
                 keyboardActions = KeyboardActions(onAny = {
                     focusManager.moveFocus(FocusDirection.Next)
                 }),
-                onValueChange = { onMeaningChange(it) },
-                label = { Text(text = stringResource(Res.string.meaning)) }
             )
-            OutlinedTextField(
+            BasicTextField(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 42.dp),
                 value = notes?: "",
-                placeholder = {
-                    Text(text = stringResource(Res.string.notes_optional))
-                },
+                placeholder = stringResource(Res.string.notes_optional),
+                onValueChange = { onNotesChange(it) },
                 minLines = 5,
                 maxLines = 5,
                 keyboardOptions = KeyboardOptions(
                     autoCorrectEnabled = false,
                     keyboardType = KeyboardType.Text,
                 ),
-                onValueChange = { onNotesChange(it) },
-                label = { Text(text = stringResource(Res.string.notes_optional)) }
             )
             Spacer(modifier = Modifier.height(12.dp))
             Button(
