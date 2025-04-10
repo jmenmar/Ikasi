@@ -71,6 +71,7 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="start_date">Start Date</string>
     <string name="total_time">Total Time</string>
+    <string name="donate_to_the_author">Donate to the author</string>
     // Badges
     <string name="badge_listening_25_hrs_title">Listening 25 hrs</string>
     <string name="badge_listening_25_hrs_description">Reach 25 hrs of listening</string>

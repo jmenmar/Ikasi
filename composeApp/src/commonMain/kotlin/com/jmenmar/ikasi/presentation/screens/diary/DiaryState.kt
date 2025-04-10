@@ -8,6 +8,7 @@ import com.jmenmar.ikasi.presentation.screens.diary.utils.LevelProgress
 
 data class DiaryState(
     val totalDays: Int = 0,
+    val totalActivityDays: Int = 0,
     val maxValue: Int = 0,
     val totalXp: LevelProgress? = null,
     val streak: Int = 0,

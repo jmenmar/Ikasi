@@ -45,6 +45,7 @@ fun DiaryScreen(
     DiaryView(
         innerPadding = innerPadding,
         totalDays = state.totalDays,
+        totalActivityDays = state.totalActivityDays,
         period = state.period,
         maxValue = state.maxValue,
         streak = state.streak,
@@ -70,6 +71,7 @@ fun DiaryScreen(
 @Composable
 fun DiaryView(
     innerPadding: PaddingValues,
+    totalActivityDays: Int,
     totalDays: Int,
     period: ActivityPeriod,
     maxValue: Int,
@@ -98,7 +100,7 @@ fun DiaryView(
         )
         if (groupedActivities.isNotEmpty() && totalDays > 0) {
             ActivityOverview(
-                totalDays = totalDays,
+                totalDays = totalActivityDays,
                 activities = groupedActivities
             )
         } else {

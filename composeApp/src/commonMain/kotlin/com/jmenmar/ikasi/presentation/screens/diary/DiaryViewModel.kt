@@ -60,6 +60,7 @@ class DiaryViewModel(
             filteredActivities = filtered,
             groupedActivities = groupActivitiesByType(allActivities),
             streak = calculateStreak(allActivities),
+            totalActivityDays = allActivities.distinctBy { it.date }.count(),
             totalXp = calculateLevelAndProgress(totalXp = allActivities.sumOf { it.time }),
             maxValue = filtered.groupBy { it.type }.maxByOrNull { it.value.size }?.value?.size
                 ?: 0,
