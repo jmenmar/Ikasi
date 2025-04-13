@@ -26,12 +26,14 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BadgeNotificationView(
-    badge: Badge
+    badge: Badge,
+    onDismiss: (Badge) -> Unit,
 ) {
     BasicCard(
         cardModifier = Modifier
             .fillMaxWidth()
             .padding(12.dp),
+        onClick = { onDismiss(badge) },
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

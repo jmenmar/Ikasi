@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.jmenmar.ikasi.domain.model.Badge
 import com.jmenmar.ikasi.domain.repository.IkasiRepository
 import com.jmenmar.ikasi.presentation.utils.todayLocalDate
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -25,20 +26,38 @@ class MainViewModel(
             ikasiRepository.getNewCompletedBadges().collectLatest { newBadgesCompleted ->
                 _state.value = _state.value.copy(
                     newBadgesCompleted = newBadgesCompleted,
-                    showNotification = newBadgesCompleted.isNotEmpty()
                 )
+                showNotification(newBadgesCompleted)
             }
         }
     }
 
-    fun saveNewBadgesCompleted(badges: List<Badge>) {
+    fun saveNewBadgesCompleted(badge: Badge) {
         viewModelScope.launch {
-            ikasiRepository.updateBadges(badges = badges.map {
-                it.copy(date = todayLocalDate().toEpochDays())
-            })
-            _state.value = _state.value.copy(
-                showNotification = false
+            ikasiRepository.updateBadge(badge =
+                badge.copy(date = todayLocalDate().toEpochDays())
             )
+        }
+    }
+
+    private fun showNotification(badges: List<Badge>) {
+        badges.forEach { badge ->
+            if (!_state.value.notifications.contains(badge)) {
+                viewModelScope.launch {
+                    delay(500)
+                    _state.value = _state.value.copy(
+                        notifications = _state.value.notifications + badge
+                    )
+                    delay(3000)
+                    _state.value = _state.value.copy(
+                        notifications = _state.value.notifications - badge
+                    )
+                    delay(500)
+                    ikasiRepository.updateBadge(badge =
+                        badge.copy(date = todayLocalDate().toEpochDays())
+                    )
+                }
+            }
         }
     }
 }

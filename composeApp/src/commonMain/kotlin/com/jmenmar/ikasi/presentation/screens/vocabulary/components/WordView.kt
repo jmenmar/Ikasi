@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun WordCard(
+fun WordView(
     word: Word,
     onDeleteClick: (Word) -> Unit
 ) {
@@ -163,13 +163,15 @@ fun WordCard(
                     if (isShown) {
                         Text(
                             text = word.meaning,
-                            style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.tertiary,
                         )
                         if (!word.notes.isNullOrEmpty()) {
                             Text(
                                 text = word.notes,
                                 style = MaterialTheme.typography.bodySmall,
-                                fontStyle = FontStyle.Italic
+                                fontStyle = FontStyle.Italic,
+                                color = MaterialTheme.colorScheme.tertiary,
                             )
                         }
                     }

@@ -156,11 +156,9 @@ class IkasiRepositoryImpl(
         }
     }
 
-    override suspend fun updateBadges(badges: List<Badge>): Result<Boolean> {
+    override suspend fun updateBadge(badge: Badge): Result<Boolean> {
         return try {
-            badges.forEach {
-                ikasiDatabase.badgeDao().updateBadge(badge = it.toEntity())
-            }
+            ikasiDatabase.badgeDao().updateBadge(badge = badge.toEntity())
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)

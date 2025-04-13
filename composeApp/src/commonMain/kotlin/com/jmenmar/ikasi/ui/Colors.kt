@@ -8,11 +8,13 @@ val White = Color(0xFFF5F7F9)
 
 val GreyLight = Color(0xFFE3E6E8)
 val GreyMedium = Color(0xFFA9AAAC)
+val GreyDark = Color(0xFF424242)
 val GreyDarkest = Color(0xFF171717)
 
 val BlueDarkest = Color(0xFF212231)
 val BlueDark = Color(0xFF292C3D)
 val BlueMedium = Color(0xFF5194F7)
+val BlueLight = Color(0xFFCFDFFF)
 
 val Blue = Color(0xFF5EB0E3)
 val Green = Color(0xFF64C29C)
@@ -28,7 +30,7 @@ internal val LightColorScheme = lightColorScheme(
     surface = White,
     onSurface = GreyDarkest,
     secondary = GreyMedium,
-    tertiary = White,
+    tertiary = GreyDark,
     onTertiary = GreyDarkest,
     surfaceContainer = White,
 )
@@ -40,7 +42,7 @@ internal val DarkColorScheme = darkColorScheme(
     surface = BlueDark,
     onSurface = White,
     secondary = GreyMedium,
-    tertiary = BlueDark,
+    tertiary = BlueLight,
     onTertiary = GreyDarkest,
     surfaceContainer = BlueDark,
 )

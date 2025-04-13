@@ -68,7 +68,7 @@ fun ConfirmResetView(
                         text = stringResource(Res.string.delete_vocabulary)
                     )
                 }
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     shape = RoundedCornerShape(12.dp),
                     onClick = onClickConfirm,

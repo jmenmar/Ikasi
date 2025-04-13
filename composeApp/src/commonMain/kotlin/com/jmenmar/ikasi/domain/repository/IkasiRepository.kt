@@ -27,7 +27,7 @@ interface IkasiRepository {
     suspend fun updateSettings(onboarding: Boolean, date: Int): Result<Boolean>
 
     suspend fun newBadges(badges: List<Badge>): Result<Boolean>
-    suspend fun updateBadges(badges: List<Badge>): Result<Boolean>
+    suspend fun updateBadge(badge: Badge): Result<Boolean>
     suspend fun getBadgesAsFlow(): Flow<List<Badge>>
     suspend fun getNewCompletedBadges(): Flow<List<Badge>>
     suspend fun getPendingBadges(): List<Badge>

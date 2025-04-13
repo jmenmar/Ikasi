@@ -31,7 +31,7 @@ import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.components.BasicTextField
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.AddVocabularyView
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.VocabularyOverview
-import com.jmenmar.ikasi.presentation.screens.vocabulary.components.WordCard
+import com.jmenmar.ikasi.presentation.screens.vocabulary.components.WordView
 import ikasi.composeapp.generated.resources.Res
 import ikasi.composeapp.generated.resources.entries
 import ikasi.composeapp.generated.resources.search_add
@@ -190,7 +190,7 @@ fun VocabularyContentView(
             modifier = Modifier.fillMaxWidth(),
         ) {
             items(words, key = { it.id!! }) { word ->
-                WordCard(
+                WordView(
                     word = word,
                     onDeleteClick = onDeleteWord
                 )
