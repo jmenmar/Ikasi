@@ -29,7 +29,7 @@ Ikasi is an app, developed with Kotlin Multiplatform, for self-directed language
 - Light Theme / Dark Theme
 - ...
 
-## 📷 Screenshots
+## 📷 Preview
 <div class="inline-block">
 <img src="https://github.com/user-attachments/assets/ac64025a-1556-4fc1-8d51-883a574f4135" width="300" height="650">
 <img src="https://github.com/user-attachments/assets/6338c271-3224-403e-b24b-16ea6fd562a2" width="300" height="650">
@@ -38,7 +38,7 @@ Ikasi is an app, developed with Kotlin Multiplatform, for self-directed language
 
 ## ⚖️ License
 ```
-Designed and developed by 2025 jmenmar (Javier)
+Copyright 2025 jmenmar (Javier)
 
 Licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License
 https://creativecommons.org/licenses/by-nc/4.0/deed.en
