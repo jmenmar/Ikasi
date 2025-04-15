@@ -1,5 +1,5 @@
 # 📖 Ikasi
-Ikasi is an app for self-directed language learning. Far from traditional and obsolete ways of studying, Ikasi helps you maintain a daily routine with activities such as writing, reading or watching movies or series.
+Ikasi is an app, developed with Kotlin Multiplatform, for self-directed language learning. Far from traditional and obsolete ways of studying, Ikasi helps you maintain a daily routine with activities such as writing, reading or watching movies or series.
 <br><br>
 ![Static Badge](https://img.shields.io/badge/Android-grey?logo=Android)
 ![Static Badge](https://img.shields.io/badge/iOS-grey?logo=apple)
@@ -17,37 +17,29 @@ Ikasi is an app for self-directed language learning. Far from traditional and ob
 - Lifecycle ViewModel
 - Kotlinx Datetime
 - Navigation Compose
-- DataStore
 
 ## 🕹️ Features
-- Today's activity log
+- Today activity log
 - Statistics and charts
 - Add your own vocabulary
 - Flashcards with your saved vocabulary
 - Random words from your vocabulary to use in the next writing activity
-- Add activities for past dates
-- Light Theme and Dark Theme
+- Badges and challenges
+- Streak and levels
+- Light Theme / Dark Theme
 - ...
 
 ## 📷 Screenshots
 <div class="inline-block">
-<img src="https://lh3.googleusercontent.com/pw/AP1GczPYiX231quL1W3GnWQfnXlL6Y3T9fV5sp5m7TP36jcIgrrdUmeq-4B4S3ex0nHh63BSxLfJWENtGpP93d4RU48Oo9FL-1IVpYDp1dvig__7x2pBHI8z7Ne1hrnsQj2T7iUiah3VlticHk3NlunwKPQP=w371-h803-s-no?authuser=0" width="300" height="650">
- <img src="https://lh3.googleusercontent.com/pw/AP1GczMvq0k_2FZ0a2LVvtSJF72-3nrcr8od7fnFB5y7jwqNg0_y3m7ei9cUGsInjA3O6WYQQ1-FfjA_HFScAZY8i6oViqbk7x4yTHnC4EVUXpMcZ4hLo6YZmikgVqj_Tx4wXjnlEHIksXkpqCs8ZMTLClkJ=w371-h803-s-no?authuser=0" width="300" height="650">
+<img src="https://github.com/user-attachments/assets/ac64025a-1556-4fc1-8d51-883a574f4135" width="300" height="650">
+<img src="https://github.com/user-attachments/assets/6338c271-3224-403e-b24b-16ea6fd562a2" width="300" height="650">
+<img src="https://github.com/user-attachments/assets/e1a2c897-d188-4bbb-a7de-7c85409a45d7" width="300" height="650">
 </div>
 
 ## ⚖️ License
 ```
 Designed and developed by 2025 jmenmar (Javier)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License
+https://creativecommons.org/licenses/by-nc/4.0/deed.en
 ```
