@@ -31,15 +31,15 @@ Ikasi is an app, developed with Kotlin Multiplatform, for self-directed language
 
 ## 📷 Preview
 <div class="inline-block">
-<img src="https://github.com/user-attachments/assets/ac64025a-1556-4fc1-8d51-883a574f4135" width="300" height="650">
-<img src="https://github.com/user-attachments/assets/6338c271-3224-403e-b24b-16ea6fd562a2" width="300" height="650">
-<img src="https://github.com/user-attachments/assets/e1a2c897-d188-4bbb-a7de-7c85409a45d7" width="300" height="650">
+<img src="https://github.com/user-attachments/assets/ac64025a-1556-4fc1-8d51-883a574f4135" width="208" height="450">
+<img src="https://github.com/user-attachments/assets/6338c271-3224-403e-b24b-16ea6fd562a2" width="208" height="450">
+<img src="https://github.com/user-attachments/assets/e1a2c897-d188-4bbb-a7de-7c85409a45d7" width="208" height="450">
 </div>
 
 ## ⚖️ License
 ```
 Copyright 2025 jmenmar (Javier)
 
-Licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License
+Creative Commons Attribution-NonCommercial 4.0 International Public License
 https://creativecommons.org/licenses/by-nc/4.0/deed.en
 ```
