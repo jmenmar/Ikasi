@@ -122,14 +122,14 @@ class IkasiRepositoryImpl(
     }
 
     override suspend fun getSettingsAsFlow() =
-        ikasiDatabase.settingsDao().getSettings().map { it?.toDomain() }
+        ikasiDatabase.settingsDao().getSettingsFlow().map { it?.toDomain() }
 
     override suspend fun getSettings() =
-        ikasiDatabase.settingsDao().getSettings2()?.toDomain()
+        ikasiDatabase.settingsDao().getSettings()?.toDomain()
 
     override suspend fun newSettings(settings: Settings): Result<Boolean> {
         return try {
-            ikasiDatabase.settingsDao().insertWord(settings = settings.toEntity())
+            ikasiDatabase.settingsDao().insertSettings(settings = settings.toEntity())
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)

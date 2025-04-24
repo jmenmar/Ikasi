@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.Flow
 interface SettingsDao {
     // INSERT
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertWord(settings: SettingsEntity)
+    suspend fun insertSettings(settings: SettingsEntity)
 
     // SELECT
     @Query("SELECT * FROM settings WHERE id = 0")
-    fun getSettings(): Flow<SettingsEntity?>
+    fun getSettingsFlow(): Flow<SettingsEntity?>
 
     @Query("SELECT * FROM settings WHERE id = 0")
-    suspend fun getSettings2(): SettingsEntity?
+    suspend fun getSettings(): SettingsEntity?
 
     // UPDATE
     @Query("UPDATE settings SET onboarding = :onboarding, startDate = :date WHERE id = 0")

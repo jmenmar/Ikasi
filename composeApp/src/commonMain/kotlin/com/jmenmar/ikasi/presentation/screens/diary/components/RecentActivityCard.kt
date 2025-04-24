@@ -45,7 +45,7 @@ fun RecentActivityCard(
                 0f
             } else {
                 activities.filter { activity ->
-                    activity.type == it }.size.toFloat() / maxValue.toFloat()
+                    activity.type == it }.sumOf { it.time }.toFloat() / maxValue.toFloat()
             }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
