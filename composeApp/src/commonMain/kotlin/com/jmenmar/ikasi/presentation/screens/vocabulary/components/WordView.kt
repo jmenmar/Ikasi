@@ -76,9 +76,7 @@ fun WordView(
             enableDismissFromStartToEnd = false,
             backgroundContent = {
                 Box(
-                    Modifier
-                        .fillMaxHeight()
-                        ,
+                    Modifier.fillMaxHeight(),
                     contentAlignment = Alignment.CenterEnd
                 ) {
                     Row(
@@ -151,7 +149,6 @@ fun WordView(
                 verticalAlignment = Alignment.Top,
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(6.dp)

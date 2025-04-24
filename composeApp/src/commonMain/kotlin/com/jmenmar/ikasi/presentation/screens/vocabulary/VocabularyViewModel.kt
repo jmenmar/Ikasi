@@ -77,20 +77,29 @@ class VocabularyViewModel(
             isLoading = false,
             word = "",
             meaning = "",
-            notes = null
+            notes = null,
+            forceAddView = false,
         )
         searchCards()
+    }
+
+    fun onShowAddWordView() {
+        _state.value = _state.value.copy(forceAddView = true)
     }
 
     private fun searchCards() {
         val search = state.value.word
         if (search.isNotEmpty()) {
             _state.value = _state.value.copy(
+                forceAddView = false,
                 filteredVocabulary = state.value.allVocabulary
                     .filter { it.title.contains(search, ignoreCase = true) },
             )
         } else {
-            _state.value = _state.value.copy(filteredVocabulary = state.value.allVocabulary)
+            _state.value = _state.value.copy(
+                forceAddView = false,
+                filteredVocabulary = state.value.allVocabulary
+            )
         }
     }
 }

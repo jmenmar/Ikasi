@@ -30,6 +30,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jmenmar.ikasi.domain.model.Word
 import com.jmenmar.ikasi.presentation.components.BasicTextField
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.AddVocabularyView
+import com.jmenmar.ikasi.presentation.screens.vocabulary.components.AddWordRow
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.VocabularyOverview
 import com.jmenmar.ikasi.presentation.screens.vocabulary.components.WordView
 import ikasi.composeapp.generated.resources.Res
@@ -54,12 +55,14 @@ fun VocabularyScreen(
         word = state.word,
         meaning = state.meaning,
         notes = state.notes,
+        forceAddView = state.forceAddView,
         onWordChange = { viewModel.onNewWordTitleChange(it) },
         onMeaningChange = { viewModel.onNewWordMeaningChange(it) },
         onNotesChange = { viewModel.onNewWordNotesChange(it) },
         onAddNewWord = { viewModel.onAddNewWord() },
         onDeleteWord = { viewModel.onDeleteWord(it) },
-        onClearWordField = { viewModel.clearForm() }
+        onClearWordField = { viewModel.clearForm() },
+        onShowAddWordView = { viewModel.onShowAddWordView() }
     )
 }
 
@@ -71,12 +74,14 @@ fun VocabularyView(
     word: String,
     meaning: String,
     notes: String?,
+    forceAddView: Boolean,
     onWordChange: (String) -> Unit = {},
     onMeaningChange: (String) -> Unit = {},
     onNotesChange: (String) -> Unit = {},
     onAddNewWord: () -> Unit = {},
     onDeleteWord: (Word) -> Unit = {},
-    onClearWordField: () -> Unit = {}
+    onClearWordField: () -> Unit = {},
+    onShowAddWordView: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -124,10 +129,12 @@ fun VocabularyView(
                     word = word,
                     meaning = meaning,
                     notes = notes,
+                    forcedAddView = forceAddView,
                     onMeaningChange = onMeaningChange,
                     onNotesChange = onNotesChange,
                     onAddNewWord = onAddNewWord,
                     onDeleteWord = onDeleteWord,
+                    onShowAddWordView = onShowAddWordView,
                 )
             } else {
                 Box(
@@ -149,6 +156,7 @@ fun VocabularyView(
 
 @Composable
 fun VocabularyContentView(
+    forcedAddView: Boolean = false,
     words: List<Word>,
     word: String,
     meaning: String,
@@ -156,9 +164,10 @@ fun VocabularyContentView(
     onMeaningChange: (String) -> Unit = {},
     onNotesChange: (String) -> Unit = {},
     onAddNewWord: () -> Unit = {},
-    onDeleteWord: (Word) -> Unit = {}
+    onDeleteWord: (Word) -> Unit = {},
+    onShowAddWordView: () -> Unit = {}
 ) {
-    if (words.isEmpty() && word.isNotEmpty()) {
+    if ((words.isEmpty() && word.isNotEmpty()) || forcedAddView) {
         val focusManager = LocalFocusManager.current
 
         Box(
@@ -189,6 +198,13 @@ fun VocabularyContentView(
         LazyColumn(
             modifier = Modifier.fillMaxWidth(),
         ) {
+            item {
+                AddWordRow(
+                    isVisible = word.isNotEmpty() && words.none { it.title == word },
+                    word = word,
+                    onShowAddWordView = onShowAddWordView
+                )
+            }
             items(words, key = { it.id!! }) { word ->
                 WordView(
                     word = word,

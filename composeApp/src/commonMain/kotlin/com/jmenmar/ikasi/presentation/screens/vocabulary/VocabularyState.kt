@@ -4,6 +4,7 @@ import com.jmenmar.ikasi.domain.model.Word
 
 data class VocabularyState(
     val isLoading: Boolean = false,
+    val forceAddView: Boolean = false,
     val word: String = "",
     val meaning: String = "",
     val notes: String? = null,
